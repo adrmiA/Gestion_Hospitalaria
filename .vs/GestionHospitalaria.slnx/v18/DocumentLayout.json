@@ -1,0 +1,1074 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\services\\citasservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:services\\citasservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\dtos\\usuariodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:dtos\\usuariodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\dtos\\signosvitalesdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:dtos\\signosvitalesdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\dtos\\roldto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:dtos\\roldto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\dtos\\proveedordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:dtos\\proveedordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\dtos\\laboratorioupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:dtos\\laboratorioupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\dtos\\laboratoriodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:dtos\\laboratoriodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\dtos\\hospitalizaciondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:dtos\\hospitalizaciondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\dtos\\expedientedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:dtos\\expedientedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\dtos\\dashboarddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:dtos\\dashboarddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\dtos\\consultadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:dtos\\consultadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\dtos\\citadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:dtos\\citadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\data\\hospitaldbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:data\\hospitaldbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\controllers\\signosvitalescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:controllers\\signosvitalescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\controllers\\proveedorescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:controllers\\proveedorescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\controllers\\productoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:controllers\\productoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\controllers\\pacientescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:controllers\\pacientescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\controllers\\medicoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:controllers\\medicoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\controllers\\laboratoriocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:controllers\\laboratoriocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\controllers\\inventariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:controllers\\inventariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\controllers\\expedientescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:controllers\\expedientescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\controllers\\consultascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:controllers\\consultascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\controllers\\citascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:controllers\\citascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\controllers\\camascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:controllers\\camascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\models\\cama.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:models\\cama.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\models\\paciente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:models\\paciente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\services\\camasservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:services\\camasservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\services\\usuariosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:services\\usuariosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\models\\arealaboratorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:models\\arealaboratorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\models\\cita.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:models\\cita.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\models\\consulta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:models\\consulta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\models\\expediente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:models\\expediente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\models\\inventario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:models\\inventario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\models\\medico.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:models\\medico.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\models\\movimientoinventario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:models\\movimientoinventario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\models\\ocupacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:models\\ocupacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\models\\ordenlaboratorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:models\\ordenlaboratorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\models\\ordenproducto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:models\\ordenproducto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\models\\producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:models\\producto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\models\\proveedor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:models\\proveedor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\models\\receta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:models\\receta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\models\\recetaproducto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:models\\recetaproducto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\models\\rol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:models\\rol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\models\\signosvitales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:models\\signosvitales.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\services\\consultasservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:services\\consultasservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\services\\dashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:services\\dashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\services\\expedientesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:services\\expedientesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\services\\inventarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:services\\inventarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\services\\laboratorioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:services\\laboratorioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\services\\medicosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:services\\medicosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\services\\pacientesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:services\\pacientesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\services\\productosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:services\\productosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\services\\proveedoresservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:services\\proveedoresservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\services\\rolesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:services\\rolesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|c:\\users\\adrmi\\source\\repos\\gestionhospitalaria\\services\\signosvitalesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3B69C3AD-EFB3-7DBD-C7A6-2F40A3F2BFB0}|GestionHospitalaria.csproj|solutionrelative:services\\signosvitalesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Properties\\launchSettings.json",
+              "RelativeToolTip": "Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-03-04T07:41:36.811Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ProveedorDTO.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\DTOs\\ProveedorDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\ProveedorDTO.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\DTOs\\ProveedorDTO.cs",
+              "RelativeToolTip": "DTOs\\ProveedorDTO.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAzwAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T23:02:31.522Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RolDTO.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\DTOs\\RolDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\RolDTO.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\DTOs\\RolDTO.cs",
+              "RelativeToolTip": "DTOs\\RolDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T23:05:32.121Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SignosVitalesDTO.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\DTOs\\SignosVitalesDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\SignosVitalesDTO.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\DTOs\\SignosVitalesDTO.cs",
+              "RelativeToolTip": "DTOs\\SignosVitalesDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-04T06:47:29.627Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UsuarioDTO.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\DTOs\\UsuarioDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\UsuarioDTO.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\DTOs\\UsuarioDTO.cs",
+              "RelativeToolTip": "DTOs\\UsuarioDTO.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAA+wBMAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T05:47:12.617Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "LaboratorioUpdateDTO.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\DTOs\\LaboratorioUpdateDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\LaboratorioUpdateDTO.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\DTOs\\LaboratorioUpdateDTO.cs",
+              "RelativeToolTip": "DTOs\\LaboratorioUpdateDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T23:04:38.857Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "LaboratorioDTO.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\DTOs\\LaboratorioDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\LaboratorioDTO.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\DTOs\\LaboratorioDTO.cs",
+              "RelativeToolTip": "DTOs\\LaboratorioDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T23:01:36.371Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CitasService.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Services\\CitasService.cs",
+              "RelativeDocumentMoniker": "Services\\CitasService.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Services\\CitasService.cs",
+              "RelativeToolTip": "Services\\CitasService.cs",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAUwEoAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T23:25:55.692Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "HospitalizacionDTO.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\DTOs\\HospitalizacionDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\HospitalizacionDTO.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\DTOs\\HospitalizacionDTO.cs",
+              "RelativeToolTip": "DTOs\\HospitalizacionDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T23:03:05.894Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ExpedienteDTO.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\DTOs\\ExpedienteDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\ExpedienteDTO.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\DTOs\\ExpedienteDTO.cs",
+              "RelativeToolTip": "DTOs\\ExpedienteDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T23:04:07.145Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "DashboardDTO.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\DTOs\\DashboardDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\DashboardDTO.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\DTOs\\DashboardDTO.cs",
+              "RelativeToolTip": "DTOs\\DashboardDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T23:06:08.804Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ConsultaDTO.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\DTOs\\ConsultaDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\ConsultaDTO.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\DTOs\\ConsultaDTO.cs",
+              "RelativeToolTip": "DTOs\\ConsultaDTO.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAACAAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T05:48:01.357Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "CitaDTO.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\DTOs\\CitaDTO.cs",
+              "RelativeDocumentMoniker": "DTOs\\CitaDTO.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\DTOs\\CitaDTO.cs",
+              "RelativeToolTip": "DTOs\\CitaDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T05:47:51.165Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "HospitalDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Data\\HospitalDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\HospitalDbContext.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Data\\HospitalDbContext.cs",
+              "RelativeToolTip": "Data\\HospitalDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADAAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T05:46:42.516Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "UsuariosController.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Controllers\\UsuariosController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UsuariosController.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Controllers\\UsuariosController.cs",
+              "RelativeToolTip": "Controllers\\UsuariosController.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABYAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T05:51:26.017Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "SignosVitalesController.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Controllers\\SignosVitalesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\SignosVitalesController.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Controllers\\SignosVitalesController.cs",
+              "RelativeToolTip": "Controllers\\SignosVitalesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-04T06:47:57.395Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "RolesController.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Controllers\\RolesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\RolesController.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Controllers\\RolesController.cs",
+              "RelativeToolTip": "Controllers\\RolesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T23:23:40.668Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ProveedoresController.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Controllers\\ProveedoresController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProveedoresController.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Controllers\\ProveedoresController.cs",
+              "RelativeToolTip": "Controllers\\ProveedoresController.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T23:28:19.87Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "ProductosController.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Controllers\\ProductosController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProductosController.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Controllers\\ProductosController.cs",
+              "RelativeToolTip": "Controllers\\ProductosController.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAgwAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T23:27:28.259Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "PacientesController.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Controllers\\PacientesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PacientesController.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Controllers\\PacientesController.cs",
+              "RelativeToolTip": "Controllers\\PacientesController.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwBsAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T23:24:30.632Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "MedicosController.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Controllers\\MedicosController.cs",
+              "RelativeDocumentMoniker": "Controllers\\MedicosController.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Controllers\\MedicosController.cs",
+              "RelativeToolTip": "Controllers\\MedicosController.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAkwBcAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T23:24:05.245Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "LaboratorioController.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Controllers\\LaboratorioController.cs",
+              "RelativeDocumentMoniker": "Controllers\\LaboratorioController.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Controllers\\LaboratorioController.cs",
+              "RelativeToolTip": "Controllers\\LaboratorioController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T23:26:53.625Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "InventarioController.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Controllers\\InventarioController.cs",
+              "RelativeDocumentMoniker": "Controllers\\InventarioController.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Controllers\\InventarioController.cs",
+              "RelativeToolTip": "Controllers\\InventarioController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T23:27:52.461Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "ExpedientesController.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Controllers\\ExpedientesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ExpedientesController.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Controllers\\ExpedientesController.cs",
+              "RelativeToolTip": "Controllers\\ExpedientesController.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAkwAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T23:24:58.757Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "DashboardController.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Controllers\\DashboardController.cs",
+              "RelativeDocumentMoniker": "Controllers\\DashboardController.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Controllers\\DashboardController.cs",
+              "RelativeToolTip": "Controllers\\DashboardController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T23:28:47.46Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "ConsultasController.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Controllers\\ConsultasController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ConsultasController.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Controllers\\ConsultasController.cs",
+              "RelativeToolTip": "Controllers\\ConsultasController.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAA1wBEAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T23:26:09.004Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "CitasController.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Controllers\\CitasController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CitasController.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Controllers\\CitasController.cs",
+              "RelativeToolTip": "Controllers\\CitasController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T23:25:43.958Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "CamasController.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Controllers\\CamasController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CamasController.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Controllers\\CamasController.cs",
+              "RelativeToolTip": "Controllers\\CamasController.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwA0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T23:26:33.751Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "Cama.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\Cama.cs",
+              "RelativeDocumentMoniker": "Models\\Cama.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\Cama.cs",
+              "RelativeToolTip": "Models\\Cama.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T20:06:11.368Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "Paciente.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\Paciente.cs",
+              "RelativeDocumentMoniker": "Models\\Paciente.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\Paciente.cs",
+              "RelativeToolTip": "Models\\Paciente.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T05:44:49.985Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\Usuario.cs",
+              "RelativeDocumentMoniker": "Models\\Usuario.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\Usuario.cs",
+              "RelativeToolTip": "Models\\Usuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T05:44:15.855Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "CamasService.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Services\\CamasService.cs",
+              "RelativeDocumentMoniker": "Services\\CamasService.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Services\\CamasService.cs",
+              "RelativeToolTip": "Services\\CamasService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T23:26:42.221Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "UsuariosService.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Services\\UsuariosService.cs",
+              "RelativeDocumentMoniker": "Services\\UsuariosService.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Services\\UsuariosService.cs",
+              "RelativeToolTip": "Services\\UsuariosService.cs",
+              "ViewState": "AgIAAGsAAAAAAAAAAAAswCAAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T05:49:27.474Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-02-25T22:54:06.588Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "WeatherForecastController.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Controllers\\WeatherForecastController.cs",
+              "RelativeDocumentMoniker": "Controllers\\WeatherForecastController.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Controllers\\WeatherForecastController.cs",
+              "RelativeToolTip": "Controllers\\WeatherForecastController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T02:02:46.437Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "AreaLaboratorio.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\AreaLaboratorio.cs",
+              "RelativeDocumentMoniker": "Models\\AreaLaboratorio.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\AreaLaboratorio.cs",
+              "RelativeToolTip": "Models\\AreaLaboratorio.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T05:45:50.199Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "Cita.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\Cita.cs",
+              "RelativeDocumentMoniker": "Models\\Cita.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\Cita.cs",
+              "RelativeToolTip": "Models\\Cita.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T05:45:26.925Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "Consulta.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\Consulta.cs",
+              "RelativeDocumentMoniker": "Models\\Consulta.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\Consulta.cs",
+              "RelativeToolTip": "Models\\Consulta.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T05:45:12.311Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "Expediente.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\Expediente.cs",
+              "RelativeDocumentMoniker": "Models\\Expediente.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\Expediente.cs",
+              "RelativeToolTip": "Models\\Expediente.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T05:45:01.505Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "Inventario.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\Inventario.cs",
+              "RelativeDocumentMoniker": "Models\\Inventario.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\Inventario.cs",
+              "RelativeToolTip": "Models\\Inventario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T05:46:19.742Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "Medico.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\Medico.cs",
+              "RelativeDocumentMoniker": "Models\\Medico.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\Medico.cs",
+              "RelativeToolTip": "Models\\Medico.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T05:44:39.546Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "MovimientoInventario.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\MovimientoInventario.cs",
+              "RelativeDocumentMoniker": "Models\\MovimientoInventario.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\MovimientoInventario.cs",
+              "RelativeToolTip": "Models\\MovimientoInventario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T20:06:01.375Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "Ocupacion.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\Ocupacion.cs",
+              "RelativeDocumentMoniker": "Models\\Ocupacion.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\Ocupacion.cs",
+              "RelativeToolTip": "Models\\Ocupacion.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T20:06:25.406Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "OrdenLaboratorio.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\OrdenLaboratorio.cs",
+              "RelativeDocumentMoniker": "Models\\OrdenLaboratorio.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\OrdenLaboratorio.cs",
+              "RelativeToolTip": "Models\\OrdenLaboratorio.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T05:46:00.892Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "OrdenProducto.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\OrdenProducto.cs",
+              "RelativeDocumentMoniker": "Models\\OrdenProducto.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\OrdenProducto.cs",
+              "RelativeToolTip": "Models\\OrdenProducto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T20:05:33.97Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "Producto.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\Producto.cs",
+              "RelativeDocumentMoniker": "Models\\Producto.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\Producto.cs",
+              "RelativeToolTip": "Models\\Producto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAQwBgAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T05:46:10.66Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "Proveedor.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\Proveedor.cs",
+              "RelativeDocumentMoniker": "Models\\Proveedor.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\Proveedor.cs",
+              "RelativeToolTip": "Models\\Proveedor.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T20:08:03.461Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "Receta.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\Receta.cs",
+              "RelativeDocumentMoniker": "Models\\Receta.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\Receta.cs",
+              "RelativeToolTip": "Models\\Receta.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T05:45:38.307Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "RecetaProducto.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\RecetaProducto.cs",
+              "RelativeDocumentMoniker": "Models\\RecetaProducto.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\RecetaProducto.cs",
+              "RelativeToolTip": "Models\\RecetaProducto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T20:04:59.264Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "Rol.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\Rol.cs",
+              "RelativeDocumentMoniker": "Models\\Rol.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\Rol.cs",
+              "RelativeToolTip": "Models\\Rol.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T05:44:05.743Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "SignosVitales.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\SignosVitales.cs",
+              "RelativeDocumentMoniker": "Models\\SignosVitales.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Models\\SignosVitales.cs",
+              "RelativeToolTip": "Models\\SignosVitales.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAkwAkAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-04T06:49:56.839Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "ConsultasService.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Services\\ConsultasService.cs",
+              "RelativeDocumentMoniker": "Services\\ConsultasService.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Services\\ConsultasService.cs",
+              "RelativeToolTip": "Services\\ConsultasService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T23:26:20.48Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "DashboardService.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Services\\DashboardService.cs",
+              "RelativeDocumentMoniker": "Services\\DashboardService.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Services\\DashboardService.cs",
+              "RelativeToolTip": "Services\\DashboardService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T23:29:04.417Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "ExpedientesService.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Services\\ExpedientesService.cs",
+              "RelativeDocumentMoniker": "Services\\ExpedientesService.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Services\\ExpedientesService.cs",
+              "RelativeToolTip": "Services\\ExpedientesService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEMAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T23:25:18.597Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "InventarioService.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Services\\InventarioService.cs",
+              "RelativeDocumentMoniker": "Services\\InventarioService.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Services\\InventarioService.cs",
+              "RelativeToolTip": "Services\\InventarioService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T23:28:05.947Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "LaboratorioService.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Services\\LaboratorioService.cs",
+              "RelativeDocumentMoniker": "Services\\LaboratorioService.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Services\\LaboratorioService.cs",
+              "RelativeToolTip": "Services\\LaboratorioService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T23:27:14.178Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "MedicosService.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Services\\MedicosService.cs",
+              "RelativeDocumentMoniker": "Services\\MedicosService.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Services\\MedicosService.cs",
+              "RelativeToolTip": "Services\\MedicosService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T23:24:16.092Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "PacientesService.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Services\\PacientesService.cs",
+              "RelativeDocumentMoniker": "Services\\PacientesService.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Services\\PacientesService.cs",
+              "RelativeToolTip": "Services\\PacientesService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T23:24:47.057Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "ProductosService.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Services\\ProductosService.cs",
+              "RelativeDocumentMoniker": "Services\\ProductosService.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Services\\ProductosService.cs",
+              "RelativeToolTip": "Services\\ProductosService.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAkwBsAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T23:27:39.065Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "ProveedoresService.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Services\\ProveedoresService.cs",
+              "RelativeDocumentMoniker": "Services\\ProveedoresService.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Services\\ProveedoresService.cs",
+              "RelativeToolTip": "Services\\ProveedoresService.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAAkwCwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T23:28:29.34Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 60,
+              "Title": "RolesService.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Services\\RolesService.cs",
+              "RelativeDocumentMoniker": "Services\\RolesService.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Services\\RolesService.cs",
+              "RelativeToolTip": "Services\\RolesService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T23:23:52.702Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 61,
+              "Title": "SignosVitalesService.cs",
+              "DocumentMoniker": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Services\\SignosVitalesService.cs",
+              "RelativeDocumentMoniker": "Services\\SignosVitalesService.cs",
+              "ToolTip": "C:\\Users\\adrmi\\source\\repos\\GestionHospitalaria\\Services\\SignosVitalesService.cs",
+              "RelativeToolTip": "Services\\SignosVitalesService.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAgwA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-04T06:50:44.032Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
