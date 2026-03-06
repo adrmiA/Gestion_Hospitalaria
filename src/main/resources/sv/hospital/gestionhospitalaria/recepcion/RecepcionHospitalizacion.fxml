@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="sv.hospital.gestionhospitalaria.controller.recepcion.RecepcionHospitalizacionController"
+      spacing="14" styleClass="content-pane">
+
+    <Label text="🏥 Hospitalización" styleClass="page-title"/>
+
+    <HBox spacing="14">
+        <!-- Ingresos activos -->
+        <VBox styleClass="card" spacing="8" HBox.hgrow="ALWAYS">
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="Pacientes hospitalizados" style="-fx-font-weight:bold;"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="🔄" styleClass="btn-primary" onAction="#loadOcupaciones"/>
+            </HBox>
+            <TableView fx:id="tableOcupaciones" prefHeight="300">
+                <columns>
+                    <TableColumn fx:id="colOcId"    text="ID"      prefWidth="40"/>
+                    <TableColumn fx:id="colOcPac"   text="Paciente" prefWidth="160"/>
+                    <TableColumn fx:id="colOcCama"  text="Cama"    prefWidth="80"/>
+                    <TableColumn fx:id="colOcSala"  text="Sala"    prefWidth="100"/>
+                    <TableColumn fx:id="colOcIng"   text="Ingreso" prefWidth="130"/>
+                </columns>
+            </TableView>
+            <Button text="🚪 Dar de Alta (liberar cama)" styleClass="btn-warning" onAction="#darDeAlta"/>
+        </VBox>
+
+        <!-- Nuevo ingreso -->
+        <VBox styleClass="card" spacing="10" prefWidth="300">
+            <Label text="Nuevo Ingreso Hospitalario" style="-fx-font-weight:bold;"/>
+            <Label text="ID Paciente:"/>     <TextField fx:id="txtPacId"   prefWidth="200"/>
+            <Label text="ID Cama:"/>         <TextField fx:id="txtCamaId"  prefWidth="200"/>
+            <Label text="Fecha Ingreso:"/>   <TextField fx:id="txtFechaIng" promptText="YYYY-MM-DDTHH:mm:ss" prefWidth="200"/>
+            <Button text="💾 Registrar Ingreso" styleClass="btn-success" onAction="#registrarIngreso"/>
+            <Label fx:id="lblHospStatus" style="-fx-text-fill:green;"/>
+        </VBox>
+    </HBox>
+</VBox>

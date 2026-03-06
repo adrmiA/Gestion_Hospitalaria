@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="sv.hospital.gestionhospitalaria.controller.LoginController"
+           style="-fx-background-color: linear-gradient(to bottom right, #1a3c5e, #2563eb);">
+
+    <VBox styleClass="login-box" maxWidth="380" maxHeight="440" alignment="CENTER" spacing="14">
+        <Label text="🏥 Gestión Hospitalaria" styleClass="login-title"/>
+
+        <Label text="Sistema de Administración Médica" styleClass="login-subtitle"/>
+
+        <Separator prefWidth="280"/>
+
+        <Label text="Usuario" style="-fx-font-weight:bold; -fx-text-fill:#374151;"/>
+        <TextField fx:id="txtUsuario" promptText="Ingrese su usuario" prefWidth="280"/>
+
+        <Label text="Contraseña" style="-fx-font-weight:bold; -fx-text-fill:#374151;"/>
+        <PasswordField fx:id="txtPassword" promptText="Ingrese su contraseña" prefWidth="280"/>
+
+        <Label fx:id="lblError" style="-fx-text-fill:red; -fx-font-size:11px;" text=""/>
+        <Button text="Iniciar Sesión" styleClass="btn-primary" prefWidth="280"
+                onAction="#handleLogin" defaultButton="true"/>
+    </VBox>
+</StackPane>

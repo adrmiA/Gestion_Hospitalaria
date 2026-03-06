@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="sv.hospital.gestionhospitalaria.controller.laboratorio.LabDashboardController">
+    <left>
+        <VBox styleClass="sidebar" prefWidth="220">
+            <Label fx:id="lblNombre" text="Laboratorio" styleClass="sidebar-title"/>
+            <Label text="Técnico de Laboratorio" styleClass="sidebar-subtitle"/>
+            <Separator style="-fx-background-color:#2d5986;"/>
+            <Button text="🧪  Órdenes"           styleClass="menu-btn" onAction="#showOrdenes"  fx:id="btnOrdenes"/>
+            <Button text="✅  Registrar Resultado" styleClass="menu-btn" onAction="#showResultados" fx:id="btnResultados"/>
+            <Region VBox.vgrow="ALWAYS"/>
+            <Button text="🚪  Cerrar Sesión" styleClass="menu-logout" onAction="#handleLogout"/>
+        </VBox>
+    </left>
+    <center>
+        <StackPane fx:id="contentArea" styleClass="content-pane"/>
+    </center>
+</BorderPane>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="sv.hospital.gestionhospitalaria.controller.laboratorio.LabOrdenesController"
+      spacing="14" styleClass="content-pane">
+
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <Label text="🧪 Órdenes de Laboratorio" styleClass="page-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <ComboBox fx:id="cmbEstadoFiltro" prefWidth="160" onAction="#filterOrdenes"/>
+        <Button text="🔄 Actualizar" styleClass="btn-primary" onAction="#loadOrdenes"/>
+    </HBox>
+
+    <VBox styleClass="card" VBox.vgrow="ALWAYS">
+        <TableView fx:id="tableOrdenes" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colId"     text="ID"      prefWidth="50"/>
+                <TableColumn fx:id="colArea"   text="Área"    prefWidth="130"/>
+                <TableColumn fx:id="colTipo"   text="Examen"  prefWidth="160"/>
+                <TableColumn fx:id="colFecha"  text="Fecha"   prefWidth="110"/>
+                <TableColumn fx:id="colEstado" text="Estado"  prefWidth="110"/>
+                <TableColumn fx:id="colResult" text="Resultado" prefWidth="230"/>
+            </columns>
+        </TableView>
+    </VBox>
+
+    <!-- Panel ingreso resultado -->
+    <VBox styleClass="card" spacing="10">
+        <Label text="Ingresar Resultado" style="-fx-font-weight:bold;"/>
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="N° Orden:"/>
+            <TextField fx:id="txtOrdenId" prefWidth="100"/>
+            <Button text="Cargar" styleClass="btn-primary" onAction="#cargarOrden"/>
+            <Label fx:id="lblOrdenInfo" style="-fx-font-weight:bold; -fx-text-fill:#1a3c5e;"/>
+        </HBox>
+        <Label text="Resultado:"/>
+        <TextArea fx:id="txtResultado" prefRowCount="3" wrapText="true" promptText="Describa los resultados del examen..."/>
+        <Button text="💾 Guardar Resultado" styleClass="btn-success" onAction="#guardarResultado"/>
+        <Label fx:id="lblLabStatus" style="-fx-text-fill:green;"/>
+    </VBox>
+</VBox>

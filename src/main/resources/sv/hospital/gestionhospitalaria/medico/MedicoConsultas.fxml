@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="sv.hospital.gestionhospitalaria.controller.medico.MedicoConsultasController"
+      spacing="14" styleClass="content-pane">
+
+    <Label text="🩺 Historial Clínico del Paciente" styleClass="page-title"/>
+
+    <HBox spacing="10" alignment="CENTER_LEFT" styleClass="card">
+        <Label text="Buscar por DUI o ID Paciente:"/>
+        <TextField fx:id="txtBuscar" promptText="Ej: 01234567-8" prefWidth="200"/>
+        <Button text="Buscar" styleClass="btn-primary" onAction="#buscarPaciente"/>
+        <Label fx:id="lblPaciente" style="-fx-font-weight:bold; -fx-text-fill:#1a3c5e;"/>
+    </HBox>
+
+    <SplitPane dividerPositions="0.45" VBox.vgrow="ALWAYS">
+        <!-- Consultas previas -->
+        <VBox styleClass="card" spacing="8">
+            <Label text="Consultas previas" style="-fx-font-weight:bold;"/>
+            <TableView fx:id="tableConsultas" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colConsId"    text="ID"          prefWidth="40"/>
+                    <TableColumn fx:id="colConsDate"  text="Fecha"       prefWidth="130"/>
+                    <TableColumn fx:id="colConsDiag"  text="Diagnóstico" prefWidth="250"/>
+                </columns>
+            </TableView>
+        </VBox>
+
+        <!-- Nueva consulta -->
+        <VBox styleClass="card" spacing="10">
+            <Label text="Nueva Consulta" style="-fx-font-weight:bold;"/>
+            <Label text="Diagnóstico:"/>
+            <TextArea fx:id="txtDiagnostico" prefRowCount="4" wrapText="true"/>
+            <Label text="Notas adicionales:"/>
+            <TextArea fx:id="txtNotas" prefRowCount="3" wrapText="true"/>
+            <Button text="💾 Registrar Consulta" styleClass="btn-success" onAction="#registrarConsulta"/>
+            <Separator/>
+            <Label text="Orden de Laboratorio" style="-fx-font-weight:bold;"/>
+            <ComboBox fx:id="cmbArea" promptText="Seleccionar área" prefWidth="200"/>
+            <TextField fx:id="txtTipoExamen" promptText="Tipo de examen"/>
+            <Button text="🧪 Crear Orden Lab." styleClass="btn-primary" onAction="#crearOrdenLab"/>
+            <Label fx:id="lblConsStatus" style="-fx-text-fill:green;"/>
+        </VBox>
+    </SplitPane>
+</VBox>

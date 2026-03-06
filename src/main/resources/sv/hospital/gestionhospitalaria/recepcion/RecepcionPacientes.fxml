@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="sv.hospital.gestionhospitalaria.controller.recepcion.RecepcionPacientesController"
+      spacing="14" styleClass="content-pane">
+
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <Label text="👥 Gestión de Pacientes" styleClass="page-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="➕ Nuevo Paciente" styleClass="btn-success" onAction="#showFormNuevo"/>
+        <Button text="🔄 Actualizar"     styleClass="btn-primary" onAction="#loadPacientes"/>
+    </HBox>
+
+    <VBox styleClass="card" VBox.vgrow="ALWAYS">
+        <TableView fx:id="tablePacientes" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colPacId"   text="ID"       prefWidth="50"/>
+                <TableColumn fx:id="colPacNom"  text="Nombre"   prefWidth="160"/>
+                <TableColumn fx:id="colPacApe"  text="Apellido" prefWidth="140"/>
+                <TableColumn fx:id="colPacDui"  text="DUI"      prefWidth="120"/>
+                <TableColumn fx:id="colPacTel"  text="Teléfono" prefWidth="110"/>
+                <TableColumn fx:id="colPacEst"  text="Estado"   prefWidth="100"/>
+            </columns>
+        </TableView>
+    </VBox>
+
+    <!-- Formulario nuevo paciente (oculto por defecto) -->
+    <VBox fx:id="formNuevo" styleClass="card" spacing="10" managed="false" visible="false">
+        <Label text="Nuevo Paciente" style="-fx-font-weight:bold; -fx-font-size:14px;"/>
+        <HBox spacing="10">
+            <VBox spacing="4" HBox.hgrow="ALWAYS">
+                <Label text="Nombre"/>  <TextField fx:id="txtNombre" prefWidth="200"/>
+            </VBox>
+            <VBox spacing="4" HBox.hgrow="ALWAYS">
+                <Label text="Apellido"/> <TextField fx:id="txtApellido"/>
+            </VBox>
+        </HBox>
+        <HBox spacing="10">
+            <VBox spacing="4" HBox.hgrow="ALWAYS">
+                <Label text="DUI"/> <TextField fx:id="txtDui" promptText="00000000-0"/>
+            </VBox>
+            <VBox spacing="4" HBox.hgrow="ALWAYS">
+                <Label text="Teléfono"/> <TextField fx:id="txtTelefono"/>
+            </VBox>
+            <VBox spacing="4" HBox.hgrow="ALWAYS">
+                <Label text="Fecha Nacimiento"/> <TextField fx:id="txtFechaNac" promptText="YYYY-MM-DD"/>
+            </VBox>
+        </HBox>
+        <HBox spacing="10">
+            <Button text="💾 Guardar" styleClass="btn-success" onAction="#guardarPaciente"/>
+            <Button text="Cancelar"  styleClass="btn-danger"   onAction="#cancelarForm"/>
+        </HBox>
+        <Label fx:id="lblPacStatus" style="-fx-text-fill:green;"/>
+    </VBox>
+</VBox>

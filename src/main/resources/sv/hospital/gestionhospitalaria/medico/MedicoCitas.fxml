@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="sv.hospital.gestionhospitalaria.controller.medico.MedicoCitasController"
+      spacing="16" styleClass="content-pane">
+
+    <HBox alignment="CENTER_LEFT" spacing="12">
+        <Label text="📅 Mis Citas" styleClass="page-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="🔄 Actualizar" styleClass="btn-primary" onAction="#loadCitas"/>
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Filtrar por estado:"/>
+        <ComboBox fx:id="cmbEstado" prefWidth="160" onAction="#filterCitas"/>
+    </HBox>
+
+    <VBox styleClass="card" VBox.vgrow="ALWAYS">
+        <TableView fx:id="tableCitas" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colId"       text="ID"        prefWidth="50"/>
+                <TableColumn fx:id="colPaciente" text="Paciente"  prefWidth="180"/>
+                <TableColumn fx:id="colFecha"    text="Fecha"     prefWidth="110"/>
+                <TableColumn fx:id="colHora"     text="Hora"      prefWidth="80"/>
+                <TableColumn fx:id="colEstado"   text="Estado"    prefWidth="120"/>
+            </columns>
+        </TableView>
+    </VBox>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Button text="✅ Confirmar cita seleccionada"  styleClass="btn-success"  onAction="#confirmarCita"/>
+        <Button text="❌ Cancelar cita seleccionada"   styleClass="btn-danger"   onAction="#cancelarCita"/>
+        <Button text="🩺 Ver expediente del paciente"  styleClass="btn-primary"  onAction="#verExpediente"/>
+    </HBox>
+
+    <Label fx:id="lblStatus" style="-fx-text-fill:#374151;"/>
+</VBox>

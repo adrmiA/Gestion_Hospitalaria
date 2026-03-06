@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="sv.hospital.gestionhospitalaria.controller.laboratorio.LabOrdenesController"
+      spacing="14" styleClass="content-pane">
+    <Label text="✅ Resultados Registrados" styleClass="page-title"/>
+    <Label text="(Usa la vista de Órdenes para registrar resultados directamente)" style="-fx-text-fill:#6b7280;"/>
+</VBox>

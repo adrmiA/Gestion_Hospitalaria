@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="sv.hospital.gestionhospitalaria.controller.medico.MedicoLaboratorioController"
+      spacing="14" styleClass="content-pane">
+
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <Label text="🧪 Órdenes de Laboratorio" styleClass="page-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="🔄 Actualizar" styleClass="btn-primary" onAction="#loadOrdenes"/>
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Buscar por N° orden:"/>
+        <TextField fx:id="txtNumOrden" promptText="ID de orden" prefWidth="140"/>
+        <Button text="Buscar" styleClass="btn-primary" onAction="#buscarOrden"/>
+    </HBox>
+
+    <VBox styleClass="card" VBox.vgrow="ALWAYS">
+        <TableView fx:id="tableOrdenes" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colOrdId"      text="N° Orden"  prefWidth="70"/>
+                <TableColumn fx:id="colOrdArea"    text="Área"      prefWidth="130"/>
+                <TableColumn fx:id="colOrdTipo"    text="Examen"    prefWidth="160"/>
+                <TableColumn fx:id="colOrdFecha"   text="Fecha"     prefWidth="110"/>
+                <TableColumn fx:id="colOrdEstado"  text="Estado"    prefWidth="100"/>
+                <TableColumn fx:id="colOrdResult"  text="Resultado" prefWidth="220"/>
+            </columns>
+        </TableView>
+    </VBox>
+    <Label fx:id="lblLabStatus"/>
+</VBox>

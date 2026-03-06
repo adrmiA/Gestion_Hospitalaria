@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="sv.hospital.gestionhospitalaria.controller.recepcion.RecepcionCitasController"
+      spacing="14" styleClass="content-pane">
+
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <Label text="📅 Gestión de Citas" styleClass="page-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="🔄 Actualizar" styleClass="btn-primary" onAction="#loadCitas"/>
+    </HBox>
+
+    <!-- Filtros -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Estado:"/>
+        <ComboBox fx:id="cmbFiltroEstado" prefWidth="150" onAction="#filterCitas"/>
+    </HBox>
+
+    <VBox styleClass="card" VBox.vgrow="ALWAYS">
+        <TableView fx:id="tableCitas" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colCitId"   text="ID"       prefWidth="50"/>
+                <TableColumn fx:id="colCitPac"  text="Paciente" prefWidth="180"/>
+                <TableColumn fx:id="colCitMed"  text="Médico"   prefWidth="160"/>
+                <TableColumn fx:id="colCitFec"  text="Fecha"    prefWidth="110"/>
+                <TableColumn fx:id="colCitHor"  text="Hora"     prefWidth="80"/>
+                <TableColumn fx:id="colCitEst"  text="Estado"   prefWidth="120"/>
+            </columns>
+        </TableView>
+    </VBox>
+
+    <!-- Acciones -->
+    <HBox spacing="10">
+        <Button text="✅ Aprobar y Asignar Médico" styleClass="btn-success"  onAction="#aprobarCita"/>
+        <Button text="❌ Cancelar cita"            styleClass="btn-danger"   onAction="#cancelarCita"/>
+    </HBox>
+
+    <!-- Panel aprobar -->
+    <VBox fx:id="panelAsignar" styleClass="card" spacing="10" visible="false" managed="false">
+        <Label text="Asignar médico a la cita" style="-fx-font-weight:bold;"/>
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Médico:"/>
+            <ComboBox fx:id="cmbMedicos" prefWidth="250"/>
+            <Label text="Fecha:"/> <TextField fx:id="txtFecha" promptText="YYYY-MM-DD" prefWidth="130"/>
+            <Label text="Hora:"/>  <TextField fx:id="txtHora"  promptText="HH:mm:ss"   prefWidth="100"/>
+        </HBox>
+        <HBox spacing="10">
+            <Button text="💾 Confirmar Asignación" styleClass="btn-success" onAction="#confirmarAsignacion"/>
+            <Button text="Cancelar" styleClass="btn-danger" onAction="#cancelarAsignacion"/>
+        </HBox>
+        <Label fx:id="lblCitStatus" style="-fx-text-fill:green;"/>
+    </VBox>
+</VBox>
