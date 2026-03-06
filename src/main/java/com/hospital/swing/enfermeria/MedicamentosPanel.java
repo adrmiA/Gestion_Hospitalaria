@@ -6,18 +6,185 @@ import com.hospital.swing.session.SessionManager;
 import javax.swing.*;
 import javax.swing.table.*;
 import java.awt.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MedicamentosPanel extends javax.swing.JPanel {
 
     private DefaultTableModel modelo;
     private int idExpediente = -1;
+    private Map<String, Integer> mapaMedicamentos;
 
     public MedicamentosPanel() {
+        mapaMedicamentos = new HashMap<>(); 
         initComponents();
         configurarTabla();
         cargarMedicamentos();
+        btnRegistrarAdmin.setEnabled(false); 
     }
 
+    private void configurarTabla() {
+        modelo = new DefaultTableModel(
+            new String[]{"Fecha", "Medicamento", "Dosis", "Cantidad", "Enfermero"}, 0
+        ) {
+            @Override
+            public boolean isCellEditable(int r, int c) { return false; }
+        };
+        tblMedicamentosDados.setModel(modelo);
+        tblMedicamentosDados.setRowHeight(25);
+        tblMedicamentosDados.getTableHeader().setBackground(new Color(30, 80, 150));
+        tblMedicamentosDados.getTableHeader().setForeground(Color.WHITE);
+    }
+
+    private void cargarMedicamentos() {
+        new SwingWorker<JsonArray, Void>() {
+            @Override
+            protected JsonArray doInBackground() throws Exception {
+                JsonElement r = ApiClient.get("/productos");
+                return r.isJsonArray() ? r.getAsJsonArray() : new JsonArray();
+            }
+
+            @Override
+            protected void done() {
+                try {
+                    cmbListaMedicamentos.removeAllItems();
+                    mapaMedicamentos.clear();
+                    for (JsonElement el : get()) {
+                        JsonObject p = el.getAsJsonObject();
+                        int id = p.has("id") ? p.get("id").getAsInt() : p.get("id_producto").getAsInt();
+                        String nombre = gs(p, "nombre");
+                        cmbListaMedicamentos.addItem(nombre);
+                        mapaMedicamentos.put(nombre, id);
+                    }
+                } catch (Exception ex) { ex.printStackTrace(); }
+            }
+        }.execute();
+    }
+
+    private void buscarPaciente() {
+        String dui = txtDuiFiltro.getText().trim();
+        if (dui.isEmpty() || dui.equals("DUI")) return;
+
+        btnBuscar.setEnabled(false);
+        new SwingWorker<JsonObject, Void>() {
+            String err;
+
+            @Override protected JsonObject doInBackground() {
+                try {
+                    JsonElement rPac = ApiClient.get("/pacientes/dui/" + dui);
+                    if (!rPac.isJsonObject()) { err = "Paciente no encontrado."; return null; }
+                    JsonObject pac = rPac.getAsJsonObject();
+
+                    if ("Inactivo".equalsIgnoreCase(gs(pac, "estado"))) {
+                        err = "PACIENTE INACTIVO."; return null;
+                    }
+
+                    int idPac = pac.has("id") ? pac.get("id").getAsInt() : pac.get("idPaciente").getAsInt();
+
+                    JsonElement rExp = ApiClient.get("/expedientes/paciente/" + idPac);
+                    JsonObject exp = rExp.isJsonArray() ? rExp.getAsJsonArray().get(0).getAsJsonObject() : rExp.getAsJsonObject();
+                    
+                    idExpediente = exp.has("id") ? exp.get("id").getAsInt() : exp.get("idExpediente").getAsInt();
+
+                    return pac;
+                } catch (Exception ex) { err = "Error: " + ex.getMessage(); return null; }
+            }
+
+            @Override protected void done() {
+                btnBuscar.setEnabled(true);
+                try {
+                    JsonObject pac = get();
+                    if (pac != null) {
+                        lblNombrePaciente.setText("Paciente: " + gs(pac, "nombre") + " " + gs(pac, "apellido"));
+                        lblNombrePaciente.setForeground(new Color(34, 139, 34));
+                        btnRegistrarAdmin.setEnabled(true);
+                        cargarHistorialMedicamentos(); 
+                    } else {
+                        lblNombrePaciente.setText(err);
+                        lblNombrePaciente.setForeground(Color.RED);
+                        btnRegistrarAdmin.setEnabled(false);
+                        idExpediente = -1;
+                        modelo.setRowCount(0);
+                    }
+                } catch (Exception e) { e.printStackTrace(); }
+            }
+        }.execute();
+    }
+
+    private void cargarHistorialMedicamentos() {
+        if (idExpediente == -1) return;
+        new SwingWorker<JsonArray, Void>() {
+            @Override protected JsonArray doInBackground() throws Exception {
+                JsonElement rMed = ApiClient.get("/administracion-medicamentos/expediente/" + idExpediente);
+                return rMed.isJsonArray() ? rMed.getAsJsonArray() : new JsonArray();
+            }
+
+            @Override protected void done() {
+                try {
+                    modelo.setRowCount(0);
+                    JsonArray lista = get();
+                    for (JsonElement el : lista) {
+                        JsonObject m = el.getAsJsonObject();
+                        modelo.addRow(new Object[]{
+                            gs(m, "fechaAdministracion"), 
+                            gs(m, "medicamento"), 
+                            gs(m, "dosis"), 
+                            gs(m, "cantidad"), 
+                            gs(m, "enfermero")
+                        });
+                    }
+                } catch (Exception e) { e.printStackTrace(); }
+            }
+        }.execute();
+    }
+
+    private void registrarAdministracion() {
+        if (idExpediente < 0 || cmbListaMedicamentos.getSelectedItem() == null) return;
+        
+        String dosis = txtDosisSubmit.getText().trim();
+        String cantidadStr = txtCantidad.getText().trim();
+
+        if (dosis.isEmpty() || cantidadStr.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Complete dosis y cantidad.");
+            return;
+        }
+
+        btnRegistrarAdmin.setEnabled(false);
+        int idProducto = mapaMedicamentos.get(cmbListaMedicamentos.getSelectedItem().toString());
+
+        new SwingWorker<Boolean, Void>() {
+            String error;
+            @Override protected Boolean doInBackground() {
+                try {
+                    JsonObject m = new JsonObject();
+                    m.addProperty("idExpediente", idExpediente);
+                    m.addProperty("idProducto",   idProducto);
+                    m.addProperty("idUsuario",    SessionManager.getInstance().getIdUsuario());
+                    m.addProperty("dosis",        dosis);
+                    m.addProperty("cantidad",     Integer.parseInt(cantidadStr));
+                    
+                    ApiClient.post("/administracion-medicamentos", m);
+                    return true;
+                } catch (Exception ex) { error = ex.getMessage(); return false; }
+            }
+            @Override protected void done() {
+                btnRegistrarAdmin.setEnabled(true);
+                try {
+                    if (get()) {
+                        JOptionPane.showMessageDialog(null, "Registrado.");
+                        txtDosisSubmit.setText(""); txtCantidad.setText("");
+                        cargarHistorialMedicamentos(); 
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Error: " + error);
+                    }
+                } catch (Exception e) {}
+            }
+        }.execute();
+    }
+
+    private String gs(JsonObject o, String k) {
+        return (o.has(k) && !o.get(k).isJsonNull()) ? o.get(k).getAsString() : "";
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,29 +194,47 @@ public class MedicamentosPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtDUI = new javax.swing.JTextField();
-        cmbMedicamentos = new javax.swing.JComboBox<>();
-        txtDosis = new javax.swing.JTextField();
+        txtDuiFiltro = new javax.swing.JTextField();
+        cmbListaMedicamentos = new javax.swing.JComboBox<>();
+        txtDosisSubmit = new javax.swing.JTextField();
         txtCantidad = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         btnBuscar = new javax.swing.JButton();
-        btnRegistrar = new javax.swing.JButton();
-        lblPaciente = new javax.swing.JLabel();
+        btnRegistrarAdmin = new javax.swing.JButton();
+        lblNombrePaciente = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblMedicamentosDados = new javax.swing.JTable();
 
-        txtDUI.setText("DUI");
-        txtDUI.addActionListener(this::txtDUIActionPerformed);
+        txtDuiFiltro.setText("DUI");
+        txtDuiFiltro.addActionListener(this::txtDuiFiltroActionPerformed);
 
-        cmbMedicamentos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmbMedicamentos.addActionListener(this::cmbMedicamentosActionPerformed);
+        cmbListaMedicamentos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbListaMedicamentos.addActionListener(this::cmbListaMedicamentosActionPerformed);
 
-        txtDosis.setText("Dosis");
-        txtDosis.addActionListener(this::txtDosisActionPerformed);
+        txtDosisSubmit.setText("Dosis");
+        txtDosisSubmit.addActionListener(this::txtDosisSubmitActionPerformed);
 
         txtCantidad.setText("Cantidad");
         txtCantidad.addActionListener(this::txtCantidadActionPerformed);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(this::btnBuscarActionPerformed);
+
+        btnRegistrarAdmin.setText("Registrar");
+        btnRegistrarAdmin.addActionListener(this::btnRegistrarAdminActionPerformed);
+
+        lblNombrePaciente.setText("Paciente: (No seleccionado)");
+
+        jLabel1.setText("Fármacos:");
+
+        jLabel2.setText("Dosis:");
+
+        jLabel3.setText("Cantidad:");
+
+        tblMedicamentosDados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -60,235 +245,230 @@ public class MedicamentosPanel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblMedicamentosDados);
 
-        btnBuscar.setText("Buscar");
-        btnBuscar.addActionListener(this::btnBuscarActionPerformed);
-
-        btnRegistrar.setText("Registrar");
-        btnRegistrar.addActionListener(this::btnRegistrarActionPerformed);
-
-        lblPaciente.setText("jLabel1");
+        jScrollPane2.setViewportView(jScrollPane1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(txtDuiFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(55, 55, 55)
+                        .addComponent(btnBuscar))
+                    .addComponent(lblNombrePaciente)
+                    .addComponent(btnRegistrarAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtDosis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblPaciente)
-                                .addGap(25, 25, 25)
-                                .addComponent(btnRegistrar)))
-                        .addContainerGap(35, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtDUI, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnBuscar)
+                            .addComponent(cmbListaMedicamentos, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtDosisSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cmbMedicamentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(80, 80, 80))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDUI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbMedicamentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDuiFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtDosis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnRegistrar)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(lblPaciente)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblNombrePaciente)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addGap(5, 5, 5)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbListaMedicamentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDosisSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnRegistrarAdmin)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void configurarTabla() {
-        modelo = new DefaultTableModel(
-            new String[]{"Fecha", "Medicamento", "Dosis", "Cantidad", "Enfermero"}, 0
-        ) {
-            public boolean isCellEditable(int r, int c) { return false; }
-        };
-        jTable1.setModel(modelo);
-        jTable1.setRowHeight(24);
-        jTable1.getTableHeader().setBackground(new Color(30, 80, 150));
-        jTable1.getTableHeader().setForeground(Color.WHITE);
-        txtDosis.setToolTipText("Dosis (ej: 500mg)");
-        txtCantidad.setToolTipText("Cantidad administrada");
-    }
-
-    private void cargarMedicamentos() {
-
-        new SwingWorker<JsonArray, Void>() {
-
-            @Override
-            protected JsonArray doInBackground() {
-                try {
-                    JsonElement r = ApiClient.get("/productos");
-                    return r.isJsonArray() ? r.getAsJsonArray() : new JsonArray();
-                } catch (Exception ex) {
-                    return new JsonArray();
-                }
-            }
-
-            @Override
-            protected void done() {
-                try {
-                    cmbMedicamentos.removeAllItems();
-                    mapaMedicamentos.clear();
-
-                    for (JsonElement el : get()) {
-                        JsonObject p = el.getAsJsonObject();
-                        int id = p.get("idProducto").getAsInt();
-                        String nombre = gs(p, "nombre");
-
-                        cmbMedicamentos.addItem(nombre);
-                        mapaMedicamentos.put(nombre, id);
-                    }
-
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            }
-        }.execute();
-    }
-    private void txtDUIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDUIActionPerformed
+    private void txtDuiFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDuiFiltroActionPerformed
         // TODO add your handling code here:
         btnBuscarActionPerformed(evt);
-    }//GEN-LAST:event_txtDUIActionPerformed
+    }//GEN-LAST:event_txtDuiFiltroActionPerformed
 
-    private void cmbMedicamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMedicamentosActionPerformed
+    private void cmbListaMedicamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbListaMedicamentosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cmbMedicamentosActionPerformed
+    }//GEN-LAST:event_cmbListaMedicamentosActionPerformed
 
-    private void txtDosisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDosisActionPerformed
+    private void txtDosisSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDosisSubmitActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtDosisActionPerformed
+    }//GEN-LAST:event_txtDosisSubmitActionPerformed
 
     private void txtCantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCantidadActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
-        String dui = txtDUI.getText().trim();
-        if (dui.isEmpty()) { JOptionPane.showMessageDialog(this, "Ingresa el DUI."); return; }
+        // TODO add your handling code here:                                     
+        String dui = txtDuiFiltro.getText().trim();
+        if (dui.isEmpty() || dui.equalsIgnoreCase("DUI")) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese un DUI válido.");
+            return;
+        }
+
         btnBuscar.setEnabled(false);
-        new SwingWorker<Void, Void>() {
+        lblNombrePaciente.setText("Buscando...");
+
+        new SwingWorker<JsonObject, Void>() {
             String err;
-            @Override protected Void doInBackground() {
+            JsonArray historial = new JsonArray();
+
+            @Override protected JsonObject doInBackground() {
                 try {
                     JsonElement rPac = ApiClient.get("/pacientes/dui/" + dui);
                     if (!rPac.isJsonObject()) { err = "Paciente no encontrado."; return null; }
                     JsonObject pac = rPac.getAsJsonObject();
-                    int idPac = pac.get("idPaciente").getAsInt();
-                    String nombre = gs(pac, "nombre") + " " + gs(pac, "apellido");
+
+                    String estado = (pac.has("estado")) ? pac.get("estado").getAsString() : "";
+                    if ("Inactivo".equalsIgnoreCase(estado)) {
+                        err = "EL PACIENTE ESTÁ INACTIVO. No se puede administrar medicación.";
+                        return null;
+                    }
+
+                    int idPac = -1;
+                    if (pac.has("id")) idPac = pac.get("id").getAsInt();
+                    else if (pac.has("idPaciente")) idPac = pac.get("idPaciente").getAsInt();
+
                     JsonElement rExp = ApiClient.get("/expedientes/paciente/" + idPac);
-                    JsonObject exp = rExp.isJsonArray()
-                        ? rExp.getAsJsonArray().get(0).getAsJsonObject()
-                        : rExp.getAsJsonObject();
-                    idExpediente = exp.get("idExpediente").getAsInt();
-                    SwingUtilities.invokeLater(() -> {
-                        lblPaciente.setText("Paciente: " + nombre);
-                        lblPaciente.setForeground(new Color(30, 80, 150));
-                        btnRegistrar.setEnabled(true);
-                    });
+                    JsonObject exp = rExp.isJsonArray() ? rExp.getAsJsonArray().get(0).getAsJsonObject() : rExp.getAsJsonObject();
+
+                    idExpediente = exp.has("id") ? exp.get("id").getAsInt() : exp.get("idExpediente").getAsInt();
+
                     JsonElement rMed = ApiClient.get("/administracion-medicamentos/expediente/" + idExpediente);
-                    JsonArray lista = rMed.isJsonArray() ? rMed.getAsJsonArray() : new JsonArray();
-                    SwingUtilities.invokeLater(() -> {
-                        modelo.setRowCount(0);
-                        for (JsonElement el : lista) {
-                            JsonObject m = el.getAsJsonObject();
-                            modelo.addRow(new Object[]{
-                                gs(m,"fechaAdministracion"), gs(m,"medicamento"),
-                                gs(m,"dosis"), gs(m,"cantidad"), gs(m,"enfermero")
-                            });
-                        }
-                    });
-                } catch (Exception ex) { err = ex.getMessage(); }
-                return null;
+                    if (rMed.isJsonArray()) historial = rMed.getAsJsonArray();
+
+                    return pac;
+                } catch (Exception ex) {
+                    err = "Error de conexión: " + ex.getMessage();
+                    return null;
+                }
             }
+
             @Override protected void done() {
                 btnBuscar.setEnabled(true);
-                if (err != null) {
-                    lblPaciente.setText(err);
-                    lblPaciente.setForeground(Color.RED);
-                    idExpediente = -1; btnRegistrar.setEnabled(false);
-                }
+                try {
+                    JsonObject pac = get();
+                    if (pac != null) {
+                        String nombre = gs(pac, "nombre") + " " + gs(pac, "apellido");
+                        lblNombrePaciente.setText("Paciente: " + nombre);
+                        lblNombrePaciente.setForeground(new Color(34, 139, 34)); // Verde
+                        btnRegistrarAdmin.setEnabled(true);
+
+                        modelo.setRowCount(0);
+                        for (JsonElement el : historial) {
+                            JsonObject m = el.getAsJsonObject();
+                            modelo.addRow(new Object[]{
+                                gs(m, "fechaAdministracion"), 
+                                gs(m, "nombreMedicamento"), 
+                                gs(m, "dosis"), 
+                                gs(m, "cantidad"), 
+                                gs(m, "nombreEnfermero")
+                            });
+                        }
+                    } else {
+                        lblNombrePaciente.setText(err);
+                        lblNombrePaciente.setForeground(Color.RED);
+                        idExpediente = -1;
+                        btnRegistrarAdmin.setEnabled(false);
+                        modelo.setRowCount(0);
+                    }
+                } catch (Exception e) { e.printStackTrace(); }
             }
         }.execute();
+
     }//GEN-LAST:event_btnBuscarActionPerformed
 
-    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+    private void btnRegistrarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarAdminActionPerformed
         // TODO add your handling code here:
-        if (idExpediente < 0 || cmbMedicamentos.getSelectedItem() == null) return;
-        btnRegistrar.setEnabled(false);
-        String nombreMed = (String) cmbMedicamentos.getSelectedItem();
-        Integer idProducto = mapaMedicamentos.get(nombreMed);
+        if (idExpediente < 0 || cmbListaMedicamentos.getSelectedItem() == null) {
+        JOptionPane.showMessageDialog(this, "Seleccione un paciente y un medicamento.");
+        return;
+    }
 
-        if (idProducto == null) {
-            JOptionPane.showMessageDialog(this, "Medicamento inválido.");
-            return;
+    String dosis = txtDosisSubmit.getText().trim();
+    String cantidad = txtCantidad.getText().trim();
+
+    if (dosis.isEmpty() || cantidad.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Debe ingresar Dosis y Cantidad.");
+        return;
+    }
+
+    btnRegistrarAdmin.setEnabled(false);
+    String nombreMed = (String) cmbListaMedicamentos.getSelectedItem();
+    Integer idProducto = mapaMedicamentos.get(nombreMed);
+
+    new SwingWorker<Boolean, Void>() {
+        String errorMsg;
+
+        @Override protected Boolean doInBackground() {
+            try {
+                JsonObject m = new JsonObject();
+                m.addProperty("idExpediente", idExpediente);
+                m.addProperty("idProducto",   idProducto);
+                m.addProperty("dosis",        dosis);
+                m.addProperty("cantidad",     cantidad);
+                m.addProperty("idUsuario",    SessionManager.getInstance().getIdUsuario());
+                
+                ApiClient.post("/administracion-medicamentos", m);
+                return true;
+            } catch (Exception ex) {
+                errorMsg = ex.getMessage();
+                return false;
+            }
         }
 
-        new SwingWorker<Void, Void>() {
-            String err;
-            @Override protected Void doInBackground() {
-                try {
-                    JsonObject m = new JsonObject();
-                    m.addProperty("idExpediente", idExpediente);
-                    m.addProperty("idProducto",   idProducto);
-                    m.addProperty("dosis",        txtDosis.getText().trim());
-                    m.addProperty("cantidad",     txtCantidad.getText().trim());
-                    m.addProperty("idUsuario",    SessionManager.getInstance().getIdUsuario());
-                    ApiClient.post("/administracion-medicamentos", m);
-                } catch (Exception ex) { err = ex.getMessage(); }
-                return null;
-            }
-            @Override protected void done() {
-                btnRegistrar.setEnabled(true);
-                if (err != null) JOptionPane.showMessageDialog(MedicamentosPanel.this, "Error: " + err);
-                else {
-                    JOptionPane.showMessageDialog(MedicamentosPanel.this, "Medicamento registrado.");
-                    txtDosis.setText(""); txtCantidad.setText("");
-                    btnBuscarActionPerformed(null);
+        @Override protected void done() {
+            btnRegistrarAdmin.setEnabled(true);
+            try {
+                if (get()) {
+                    JOptionPane.showMessageDialog(MedicamentosPanel.this, "Medicamento registrado con éxito.");
+                    txtDosisSubmit.setText(""); 
+                    txtCantidad.setText("");
+                    btnBuscarActionPerformed(null); 
+                } else {
+                    JOptionPane.showMessageDialog(MedicamentosPanel.this, "Error al registrar: " + errorMsg);
                 }
-            }
-        }.execute();
-    }//GEN-LAST:event_btnRegistrarActionPerformed
-
-    private String gs(JsonObject o, String k) {
-        return (o.has(k) && !o.get(k).isJsonNull()) ? o.get(k).getAsString() : "";
-    }
-    private java.util.Map<String, Integer> mapaMedicamentos = new java.util.HashMap<>();
+            } catch (Exception e) { e.printStackTrace(); }
+        }
+    }.execute();
+    }//GEN-LAST:event_btnRegistrarAdminActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnRegistrar;
-    private javax.swing.JComboBox<String> cmbMedicamentos;
+    private javax.swing.JButton btnRegistrarAdmin;
+    private javax.swing.JComboBox<String> cmbListaMedicamentos;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JLabel lblPaciente;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblNombrePaciente;
+    private javax.swing.JTable tblMedicamentosDados;
     private javax.swing.JTextField txtCantidad;
-    private javax.swing.JTextField txtDUI;
-    private javax.swing.JTextField txtDosis;
+    private javax.swing.JTextField txtDosisSubmit;
+    private javax.swing.JTextField txtDuiFiltro;
     // End of variables declaration//GEN-END:variables
 }

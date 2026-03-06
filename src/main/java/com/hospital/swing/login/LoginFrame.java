@@ -34,57 +34,71 @@ public class LoginFrame extends javax.swing.JFrame {
         btnLogin = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         lblStatus = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        txtUsuario.setText("Usuario");
         txtUsuario.addActionListener(this::txtUsuarioActionPerformed);
 
-        txtPassword.setText("Contraseña");
         txtPassword.addActionListener(this::txtPasswordActionPerformed);
 
         btnLogin.setText("Ingresar");
         btnLogin.addActionListener(this::btnLoginActionPerformed);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Sistema Hospitalario");
 
-        lblStatus.setText("jLabel2");
+        jLabel2.setText("Usuario:");
+
+        jLabel3.setText("Contraseña:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(173, 173, 173)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
+                        .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(66, 66, 66)
-                                .addComponent(btnLogin))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtUsuario)
-                                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(63, Short.MAX_VALUE))
+                                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(13, 13, 13))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)))
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(btnLogin)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(34, 34, 34)
                 .addComponent(jLabel1)
-                .addGap(39, 39, 39)
+                .addGap(26, 26, 26)
+                .addComponent(jLabel2)
+                .addGap(5, 5, 5)
                 .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblStatus)
-                .addGap(13, 13, 13)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(lblStatus)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addComponent(btnLogin)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addGap(22, 22, 22))
         );
 
         pack();
@@ -122,7 +136,6 @@ public class LoginFrame extends javax.swing.JFrame {
                     body.addProperty("usuario", usuario);
                     body.addProperty("contraseña", password);
 
-                    // 1. Llamada al API
                     JsonElement res = ApiClient.post("/usuarios/login", body);
 
                     if (res == null || res.isJsonNull()) {
@@ -133,31 +146,26 @@ public class LoginFrame extends javax.swing.JFrame {
                     JsonObject obj = res.getAsJsonObject();
                     System.out.println("JSON RECIBIDO: " + obj.toString());
 
-                    // 1. El Token está en la raíz
                     String token = obj.has("token") ? obj.get("token").getAsString() : "";
 
-                    // 2. Los demás datos están DENTRO del objeto "usuario"
                     if (obj.has("usuario") && !obj.get("usuario").isJsonNull()) {
-                        JsonObject userObj = obj.getAsJsonObject("usuario"); // Entramos al sub-objeto
+                        JsonObject userObj = obj.getAsJsonObject("usuario"); 
 
-                        // Extraemos los datos usando las claves que vimos en tu consola: "id", "nombre", "nombreRol"
                         int idUsr = userObj.get("id").getAsInt();
                         String nombre = userObj.get("nombre").getAsString();
                         String rol = userObj.get("nombreRol").getAsString();
 
-                        // 3. Validación de Roles (Ajustada a "Administrador")
                         if (rol.equalsIgnoreCase("Administrador")) {
                             // OK
                         } else if (rol.equalsIgnoreCase("Enfermería")) {
                             // OK
-                        } else if (rol.equalsIgnoreCase("Bodega") || rol.equalsIgnoreCase("Farmacéutico")) {
+                        } else if (rol.equalsIgnoreCase("Bodega")) {
                             // OK
                         } else {
                             err = "Acceso denegado para el rol: " + rol;
                             return null;
                         }
 
-                        // 4. Iniciar sesión con los datos extraídos
                         SessionManager.getInstance().iniciarSesion(token, rol, idUsr, nombre);
 
                     } else {
@@ -212,6 +220,8 @@ public class LoginFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogin;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblStatus;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUsuario;

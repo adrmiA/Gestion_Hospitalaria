@@ -37,7 +37,6 @@ public class ProductoFormDialog extends javax.swing.JDialog {
         new SwingWorker<JsonObject, Void>() {
             @Override
             protected JsonObject doInBackground() throws Exception {
-                // El endpoint de C# suele ser /api/productos/{id}
                 JsonElement r = ApiClient.get("/productos/" + idProducto);
                 return r.isJsonObject() ? r.getAsJsonObject() : null;
             }
@@ -46,16 +45,13 @@ public class ProductoFormDialog extends javax.swing.JDialog {
                 try {
                     JsonObject p = get();
                     if (p == null) return;
-                    // Mapeo flexible para nombres de C# (Mayúscula o minúscula)
                     txtNombre.setText(gs(p, "nombre"));
                     txtTipo.setText(gs(p, "tipoProducto"));
                     txtUnidad.setText(gs(p, "unidadMedida"));
                     txtPrecio.setText(gs(p, "precio")); 
                     txtFechaVencimiento.setText(gs(p, "fechaVencimiento"));
-                    txtUbicacion.setText(gs(p, "ubicacion"));
                     cmbEstado.setSelectedItem(gs(p, "estado"));
                     
-                    // Cargar stock actual del producto
                     int stock = p.has("stockActual") ? p.get("stockActual").getAsInt() : 0;
                     txtStockActual.setText(String.valueOf(stock));
                 } catch (Exception ex) { ex.printStackTrace(); }
@@ -76,41 +72,39 @@ public class ProductoFormDialog extends javax.swing.JDialog {
         txtUnidad = new javax.swing.JTextField();
         txtPrecio = new javax.swing.JTextField();
         txtFechaVencimiento = new javax.swing.JTextField();
-        txtUbicacion = new javax.swing.JTextField();
         txtStockActual = new javax.swing.JTextField();
         txtStockMinimo = new javax.swing.JTextField();
         txtStockMaximo = new javax.swing.JTextField();
         cmbEstado = new javax.swing.JComboBox<>();
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        txtNombre.setText("Nombre");
         txtNombre.addActionListener(this::txtNombreActionPerformed);
 
-        txtTipo.setText("Tipo");
         txtTipo.addActionListener(this::txtTipoActionPerformed);
 
-        txtUnidad.setText("Unidad");
         txtUnidad.addActionListener(this::txtUnidadActionPerformed);
 
-        txtPrecio.setText("Precio");
         txtPrecio.addActionListener(this::txtPrecioActionPerformed);
 
-        txtFechaVencimiento.setText("Fecha de Vencimiento");
         txtFechaVencimiento.addActionListener(this::txtFechaVencimientoActionPerformed);
 
-        txtUbicacion.setText("Ubicación");
-        txtUbicacion.addActionListener(this::txtUbicacionActionPerformed);
-
-        txtStockActual.setText("Stock actual");
         txtStockActual.addActionListener(this::txtStockActualActionPerformed);
 
-        txtStockMinimo.setText("Stock mínimo");
         txtStockMinimo.addActionListener(this::txtStockMinimoActionPerformed);
 
-        txtStockMaximo.setText("Stock máximo");
         txtStockMaximo.addActionListener(this::txtStockMaximoActionPerformed);
 
         cmbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -122,65 +116,133 @@ public class ProductoFormDialog extends javax.swing.JDialog {
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(this::btnCancelarActionPerformed);
 
+        jLabel1.setText("Nombre:");
+
+        jLabel2.setText("Tipo:");
+
+        jLabel3.setText("Unidad:");
+
+        jLabel4.setText("Precio:");
+
+        jLabel5.setText("Fecha de Vencimiento:");
+
+        jLabel6.setText("Stock actual:");
+
+        jLabel7.setText("Stock mínimo:");
+
+        jLabel8.setText("Stock máximo:");
+
+        jLabel9.setText("Estado:");
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel10.setText("Agregar Producto");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnGuardar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCancelar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
-                                .addComponent(txtTipo)
-                                .addComponent(txtUnidad)
-                                .addComponent(txtPrecio))
-                            .addComponent(txtFechaVencimiento)
-                            .addComponent(txtUbicacion))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cmbEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtStockActual)
-                            .addComponent(txtStockMinimo)
-                            .addComponent(txtStockMaximo, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE))))
-                .addGap(133, 133, 133))
+                        .addGap(68, 68, 68)
+                        .addComponent(btnCancelar)
+                        .addGap(147, 147, 147))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel3))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtStockMinimo, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel7)))))
+                        .addGap(31, 31, 31))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtStockMaximo, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel8))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(cmbEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGap(42, 42, 42))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel5)
+                                .addComponent(txtFechaVencimiento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtStockActual, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel6))
+                            .addContainerGap()))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel10)
+                .addGap(146, 146, 146))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtStockActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(36, Short.MAX_VALUE)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtStockMinimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtStockMaximo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtFechaVencimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(cmbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel2)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(5, 5, 5)
+                                .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(20, 20, 20)))
+                .addGap(7, 7, 7)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFechaVencimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtStockActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtStockMinimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9))
+                .addGap(5, 5, 5)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtStockMaximo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(btnCancelar))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addGap(47, 47, 47))
         );
 
         pack();
@@ -205,10 +267,6 @@ public class ProductoFormDialog extends javax.swing.JDialog {
     private void txtFechaVencimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaVencimientoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFechaVencimientoActionPerformed
-
-    private void txtUbicacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUbicacionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUbicacionActionPerformed
 
     private void txtStockActualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStockActualActionPerformed
         // TODO add your handling code here:
@@ -242,7 +300,6 @@ public class ProductoFormDialog extends javax.swing.JDialog {
             protected Void doInBackground() {
                 try {
                     JsonObject p = new JsonObject();
-                    // Nombres que espera el DTO de C#
                     p.addProperty("Nombre",           txtNombre.getText().trim());
                     p.addProperty("TipoProducto",     txtTipo.getText().trim());
                     p.addProperty("UnidadMedida",     txtUnidad.getText().trim());
@@ -258,38 +315,27 @@ public class ProductoFormDialog extends javax.swing.JDialog {
                         resp = ApiClient.put("/productos/" + idProducto, p);
                     }
 
-                    // --- SOLUCIÓN AL ERROR DEL NULL ---
                     int resolvedId = 0;
                     if (idProducto != null) {
                         resolvedId = idProducto;
                     } else {
                         JsonObject responseObj = resp.getAsJsonObject();
-                        // Intentar obtener el ID con las llaves que C# suele usar
                         if (responseObj.has("id")) resolvedId = responseObj.get("id").getAsInt();
                         else if (responseObj.has("Id")) resolvedId = responseObj.get("Id").getAsInt();
                         else if (responseObj.has("idProducto")) resolvedId = responseObj.get("idProducto").getAsInt();
                     }
 
-                    // Guardar datos técnicos en Inventario
-                    // --- REEMPLAZA ESTE BLOQUE DENTRO DEL doInBackground ---
-
-                    // Preparamos el objeto para el movimiento de inventario inicial
                     JsonObject mov = new JsonObject();
                     mov.addProperty("IdProducto", resolvedId); 
-                    // Cambiamos "StockActual" por "Cantidad", que es lo que el DTO de C# espera
                     mov.addProperty("Cantidad", Integer.parseInt(txtStockActual.getText().trim()));
-                    // Agregamos los campos obligatorios que el servidor pide (Error 400)
                     mov.addProperty("TipoMovimiento", "ENTRADA"); 
                     mov.addProperty("Motivo", "Registro inicial de stock");
 
-                    // Enviamos la petición al endpoint correcto
                     try {
-                        // Usamos la ruta /inventario/movimiento que definimos en C#
                         ApiClient.post("/inventario/movimiento", mov);
                     } catch (Exception ex) {
                         System.err.println("Error al registrar stock inicial: " + ex.getMessage());
-                        // No lanzamos error para que al menos el producto se cree, 
-                        // aunque puedes manejarlo según prefieras.
+
                     }
                 } catch (Exception ex) { 
                     err = ex.getMessage(); 
@@ -315,7 +361,6 @@ public class ProductoFormDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelarActionPerformed
     private String gs(JsonObject o, String k) {
         if (o.has(k) && !o.get(k).isJsonNull()) return o.get(k).getAsString();
-        // Probar con Mayúscula inicial (PascalCase de C#)
         
         String capitalized = k.substring(0, 1).toUpperCase() + k.substring(1);
         if (o.has(capitalized) && !o.get(capitalized).isJsonNull()) return o.get(capitalized).getAsString();
@@ -362,6 +407,16 @@ public class ProductoFormDialog extends javax.swing.JDialog {
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JComboBox<String> cmbEstado;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField txtFechaVencimiento;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPrecio;
@@ -369,7 +424,6 @@ public class ProductoFormDialog extends javax.swing.JDialog {
     private javax.swing.JTextField txtStockMaximo;
     private javax.swing.JTextField txtStockMinimo;
     private javax.swing.JTextField txtTipo;
-    private javax.swing.JTextField txtUbicacion;
     private javax.swing.JTextField txtUnidad;
     // End of variables declaration//GEN-END:variables
 }

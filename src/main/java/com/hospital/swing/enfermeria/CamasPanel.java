@@ -4,8 +4,8 @@ import com.google.gson.*;
 import com.hospital.swing.api.ApiClient;
 import com.hospital.swing.session.SessionManager;
 import javax.swing.*;
-import javax.swing.table.*;
-import java.awt.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.Color;
 
 public class CamasPanel extends javax.swing.JPanel {
 
@@ -18,6 +18,62 @@ public class CamasPanel extends javax.swing.JPanel {
         cargarDatos();
     }
 
+    private void configurarTablas() {
+        modeloCamas = new DefaultTableModel(new String[]{"ID", "Número", "Sala", "Estado"}, 0);
+        tblCamasDisponibles.setModel(modeloCamas);
+        
+        modeloOcupadas = new DefaultTableModel(new String[]{"ID Ocup.", "Cama", "Paciente", "Ingreso"}, 0);
+        tblOcupacionesActivas.setModel(modeloOcupadas);
+        
+        // Estilo
+        tblCamasDisponibles.getTableHeader().setBackground(new Color(46, 204, 113));
+        tblOcupacionesActivas.getTableHeader().setBackground(new Color(231, 76, 60));
+    }
+
+    public void cargarDatos() {
+        new SwingWorker<Void, Void>() {
+            JsonArray jsonCamas = new JsonArray();
+            JsonArray jsonOcup = new JsonArray();
+    
+            @Override protected Void doInBackground() throws Exception {
+                try { 
+                    JsonElement r1 = ApiClient.get("/camas");
+                    if (r1.isJsonArray()) jsonCamas = r1.getAsJsonArray(); 
+                } catch (Exception ignored) {}
+
+                try { 
+                    JsonElement r2 = ApiClient.get("/camas/ocupaciones/activas"); 
+                    if (r2.isJsonArray()) jsonOcup = r2.getAsJsonArray(); 
+                } catch (Exception ignored) {}
+                return null;
+            }
+
+            @Override 
+            protected void done() {
+                modeloCamas.setRowCount(0);
+                for (JsonElement el : jsonCamas) {
+                    JsonObject c = el.getAsJsonObject();
+                    modeloCamas.addRow(new Object[]{ 
+                        c.has("id") ? c.get("id").getAsInt() : (c.has("id_cama") ? c.get("id_cama").getAsInt() : 0),
+                        gs(c,"numero"), 
+                        gs(c,"sala"), 
+                        gs(c,"estado") 
+                    });
+                }
+
+                modeloOcupadas.setRowCount(0);
+                for (JsonElement el : jsonOcup) {
+                    JsonObject o = el.getAsJsonObject();
+                    modeloOcupadas.addRow(new Object[]{
+                        o.get("id_ocupacion").getAsInt(), // Antes decía "id"
+                        gs(o, "numero"), 
+                        gs(o, "paciente_nombre"), 
+                        gs(o, "fecha_ingreso")
+                    });
+                }
+            }
+        }.execute();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,13 +85,16 @@ public class CamasPanel extends javax.swing.JPanel {
 
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jSplitPane1 = new javax.swing.JSplitPane();
+        btnAsignarCama = new javax.swing.JButton();
+        btnActualizarCamas = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblCamasDisponibles = new javax.swing.JTable();
+        jScrollPane5 = new javax.swing.JScrollPane();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        btnAsignar = new javax.swing.JButton();
-        btnDarAlta = new javax.swing.JButton();
+        tblOcupacionesActivas = new javax.swing.JTable();
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -50,7 +109,16 @@ public class CamasPanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        btnAsignarCama.setText("Asignar Cama");
+        btnAsignarCama.addActionListener(this::btnAsignarCamaActionPerformed);
+
+        btnActualizarCamas.setText("Actualizar");
+
+        jLabel1.setText("Camas ocupadas:");
+
+        jLabel2.setText("Camas:");
+
+        tblCamasDisponibles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -61,9 +129,11 @@ public class CamasPanel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblCamasDisponibles);
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        jScrollPane4.setViewportView(jScrollPane1);
+
+        tblOcupacionesActivas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -74,181 +144,132 @@ public class CamasPanel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(tblOcupacionesActivas);
 
-        btnAsignar.setText("Asignar Cama");
-        btnAsignar.addActionListener(this::btnAsignarActionPerformed);
-
-        btnDarAlta.setText("Dar de Alta");
-        btnDarAlta.addActionListener(this::btnDarAltaActionPerformed);
+        jScrollPane5.setViewportView(jScrollPane3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(116, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAsignar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
-                        .addComponent(btnDarAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(25, 25, 25))
+                        .addComponent(btnAsignarCama)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnActualizarCamas))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAsignar)
-                    .addComponent(btnDarAlta))
-                .addGap(27, 27, 27))
+                    .addComponent(btnAsignarCama)
+                    .addComponent(btnActualizarCamas))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void configurarTablas() {
-        // Tabla camas disponibles
-        modeloCamas = new DefaultTableModel(
-            new String[]{"ID Cama", "Número", "Tipo", "Estado"}, 0
-        ) { public boolean isCellEditable(int r, int c) { return false; } };
-        jTable1.setModel(modeloCamas);
-        jTable1.setRowHeight(24);
-        jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        jTable1.getTableHeader().setBackground(new Color(34, 139, 34));
-        jTable1.getTableHeader().setForeground(Color.WHITE);
-        jTable1.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
-            @Override public java.awt.Component getTableCellRendererComponent(
-                    JTable t, Object v, boolean sel, boolean foc, int r, int c) {
-                super.getTableCellRendererComponent(t, v, sel, foc, r, c);
-                String estado = modeloCamas.getValueAt(
-                    t.convertRowIndexToModel(r), 3).toString();
-                if (!sel) setBackground("disponible".equalsIgnoreCase(estado)
-                    ? new Color(200, 255, 200) : new Color(255, 220, 220));
-                return this;
-            }
-        });
-
-        // Tabla ocupaciones activas
-        modeloOcupadas = new DefaultTableModel(
-            new String[]{"ID Ocup.", "Cama", "Paciente", "Fecha Ingreso"}, 0
-        ) { public boolean isCellEditable(int r, int c) { return false; } };
-        jTable3.setModel(modeloOcupadas);
-        jTable3.setRowHeight(24);
-        jTable3.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        jTable3.getTableHeader().setBackground(new Color(180, 40, 40));
-        jTable3.getTableHeader().setForeground(Color.WHITE);
-    }
-    public void cargarDatos() {
-        new SwingWorker<Void, Void>() {
-            JsonArray camas = new JsonArray();
-            JsonArray ocupaciones = new JsonArray();
-            @Override protected Void doInBackground() {
-                try { JsonElement r = ApiClient.get("/camas");
-                    if (r.isJsonArray()) camas = r.getAsJsonArray(); } catch (Exception ignored) {}
-                try { JsonElement r = ApiClient.get("/ocupaciones/activas");
-                    if (r.isJsonArray()) ocupaciones = r.getAsJsonArray(); } catch (Exception ignored) {}
-                return null;
-            }
-            @Override protected void done() {
-                modeloCamas.setRowCount(0);
-                for (JsonElement el : camas) {
-                    JsonObject c = el.getAsJsonObject();
-                    modeloCamas.addRow(new Object[]{
-                        c.get("id_cama").getAsInt(),
-                        gs(c,"numero"), gs(c,"sala"), gs(c,"estado") // Usar nombres de la DB
-                    });
-                }
-                modeloOcupadas.setRowCount(0);
-                for (JsonElement el : ocupaciones) {
-                    JsonObject o = el.getAsJsonObject();
-                    modeloOcupadas.addRow(new Object[]{
-                        o.get("id_ocupacion").getAsInt(),
-                        gs(o,"numero"), gs(o,"paciente_nombre"), gs(o,"fecha_ingreso")
-                    });
-                }
-            }
-        }.execute();
-    }
     
-    private void btnAsignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarActionPerformed
+    private void btnAsignarCamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarCamaActionPerformed
         // TODO add your handling code here:
-        int row = jTable1.getSelectedRow();
-        if (row < 0) { JOptionPane.showMessageDialog(this, "Selecciona una cama."); return; }
-        int idCama = (int) modeloCamas.getValueAt(jTable1.convertRowIndexToModel(row), 0);
-        String estado = (String) modeloCamas.getValueAt(jTable1.convertRowIndexToModel(row), 3);
-        if (!"disponible".equalsIgnoreCase(estado)) {
-            JOptionPane.showMessageDialog(this, "La cama no está disponible."); return; }
-        String dui = JOptionPane.showInputDialog(this, "DUI del paciente:");
+        int row = tblCamasDisponibles.getSelectedRow();
+        if (row < 0) { 
+            JOptionPane.showMessageDialog(this, "Por favor, seleccione una cama de la lista."); 
+            return; 
+        }
+
+        int modelRow = tblCamasDisponibles.convertRowIndexToModel(row);
+        int idCama = (int) modeloCamas.getValueAt(modelRow, 0);
+        String estado = modeloCamas.getValueAt(modelRow, 3).toString();
+
+        if (!"disponible".equalsIgnoreCase(estado.trim())) {
+            JOptionPane.showMessageDialog(this, "Esta cama ya está ocupada o no disponible."); 
+            return; 
+        }
+
+        String dui = JOptionPane.showInputDialog(this, "Ingrese el DUI del paciente a hospitalizar:");
         if (dui == null || dui.trim().isEmpty()) return;
-        new SwingWorker<Void, Void>() {
-            String err;
-            @Override protected Void doInBackground() {
+
+        btnAsignarCama.setEnabled(false);
+
+        new SwingWorker<Boolean, Void>() {
+            String message;
+
+            @Override protected Boolean doInBackground() {
                 try {
                     JsonElement rPac = ApiClient.get("/pacientes/dui/" + dui.trim());
-                    if (!rPac.isJsonObject()) { err = "Paciente no encontrado."; return null; }
-                    int idPac = rPac.getAsJsonObject().get("idPaciente").getAsInt();
-                    JsonObject oc = new JsonObject();
-                    oc.addProperty("idCama",     idCama);
-                    oc.addProperty("idPaciente", idPac);
-                    oc.addProperty("idUsuario",  SessionManager.getInstance().getIdUsuario());
-                    ApiClient.post("/ocupaciones", oc);
-                } catch (Exception ex) { err = ex.getMessage(); }
-                return null;
-            }
-            @Override protected void done() {
-                if (err != null) JOptionPane.showMessageDialog(CamasPanel.this, "Error: " + err);
-                else { JOptionPane.showMessageDialog(CamasPanel.this, "Cama asignada."); cargarDatos(); }
-            }
-        }.execute();
-    }//GEN-LAST:event_btnAsignarActionPerformed
+                    if (!rPac.isJsonObject()) { 
+                        message = "El paciente con DUI " + dui + " no está registrado."; 
+                        return false; 
+                    }
 
-    private void btnDarAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDarAltaActionPerformed
-        // TODO add your handling code here:
-        int row = jTable3.getSelectedRow();
-        if (row < 0) { JOptionPane.showMessageDialog(this, "Selecciona una ocupación."); return; }
-        int idOcup = (int) modeloOcupadas.getValueAt(jTable3.convertRowIndexToModel(row), 0);
-        String pac  = (String) modeloOcupadas.getValueAt(jTable3.convertRowIndexToModel(row), 2);
-        if (JOptionPane.showConfirmDialog(this, "¿Dar de alta a: " + pac + "?",
-                "Confirmar Alta", JOptionPane.YES_NO_OPTION) != JOptionPane.YES_OPTION) return;
-        new SwingWorker<Void, Void>() {
-            String err;
-            @Override protected Void doInBackground() {
-                try { ApiClient.put("/ocupaciones/" + idOcup + "/alta", new JsonObject()); }
-                catch (Exception ex) { err = ex.getMessage(); }
-                return null;
+                    JsonObject pac = rPac.getAsJsonObject();
+
+                    int idPac = pac.has("id") ? pac.get("id").getAsInt() : pac.get("idPaciente").getAsInt();
+
+                    JsonObject oc = new JsonObject();
+                    oc.addProperty("idCama", idCama);
+                    oc.addProperty("idPaciente", idPac);
+                    oc.addProperty("fechaIngreso", java.time.LocalDateTime.now().toString());
+
+                    JsonElement response = ApiClient.post("/camas/ocupar", oc);
+
+                    return response != null;
+
+                } catch (Exception ex) { 
+                    message = "Error de conexión: " + ex.getMessage(); 
+                    return false; 
+                }
             }
+
             @Override protected void done() {
-                if (err != null) JOptionPane.showMessageDialog(CamasPanel.this, "Error: " + err);
-                else { JOptionPane.showMessageDialog(CamasPanel.this, "Alta registrada."); cargarDatos(); }
+                btnAsignarCama.setEnabled(true);
+                try {
+                    if (get()) {
+                        JOptionPane.showMessageDialog(CamasPanel.this, "¡Cama asignada exitosamente!");
+                        cargarDatos();
+                    } else {
+                        JOptionPane.showMessageDialog(CamasPanel.this, message != null ? message : "No se pudo asignar la cama.");
+                    }
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(CamasPanel.this, "Error en el proceso.");
+                }
             }
         }.execute();
-    }//GEN-LAST:event_btnDarAltaActionPerformed
+    }//GEN-LAST:event_btnAsignarCamaActionPerformed
     
     private String gs(JsonObject o, String k) {
         return (o.has(k) && !o.get(k).isJsonNull()) ? o.get(k).getAsString() : "";
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAsignar;
-    private javax.swing.JButton btnDarAlta;
+    private javax.swing.JButton btnActualizarCamas;
+    private javax.swing.JButton btnAsignarCama;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
+    private javax.swing.JTable tblCamasDisponibles;
+    private javax.swing.JTable tblOcupacionesActivas;
     // End of variables declaration//GEN-END:variables
 }
+

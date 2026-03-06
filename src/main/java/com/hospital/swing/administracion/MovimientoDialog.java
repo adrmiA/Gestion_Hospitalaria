@@ -95,16 +95,18 @@ public class MovimientoDialog extends JDialog {
         btnRegistrar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         cmbProductos = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         cmbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbTipo.addActionListener(this::cmbTipoActionPerformed);
 
-        txtCantidad.setText("Cantidad");
         txtCantidad.addActionListener(this::txtCantidadActionPerformed);
 
-        txtMotivo.setText("Motivo");
         txtMotivo.addActionListener(this::txtMotivoActionPerformed);
 
         btnRegistrar.setText("Registrar");
@@ -116,36 +118,56 @@ public class MovimientoDialog extends JDialog {
         cmbProductos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbProductos.addActionListener(this::cmbProductosActionPerformed);
 
+        jLabel1.setText("Seleccione un producto:");
+
+        jLabel2.setText("Seleccione tipo de movimiento:");
+
+        jLabel3.setText("Cantidad:");
+
+        jLabel4.setText("Motivo:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(btnRegistrar)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnCancelar))
+                        .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(4, 4, 4))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(txtCantidad)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel3))
                             .addGap(18, 18, 18)
-                            .addComponent(txtMotivo, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(cmbProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtMotivo, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel4))))
+                    .addComponent(cmbProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(33, Short.MAX_VALUE)
+                .addGap(34, 34, 34)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cmbProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addGap(2, 2, 2)
                 .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addGap(1, 1, 1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtMotivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -153,7 +175,7 @@ public class MovimientoDialog extends JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistrar)
                     .addComponent(btnCancelar))
-                .addGap(37, 37, 37))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         pack();
@@ -182,7 +204,6 @@ public class MovimientoDialog extends JDialog {
 
         InventarioItem selected = (InventarioItem) itemObj;
         
-        // Validación de seguridad para el ID
         if (selected.id <= 0) {
             JOptionPane.showMessageDialog(this, "Error: El ID del producto es 0. Verifique la base de datos.");
             return;
@@ -207,7 +228,6 @@ public class MovimientoDialog extends JDialog {
             @Override protected Void doInBackground() {
                 try {
                     JsonObject mov = new JsonObject();
-                    // Sincronizado exactamente con el DTO de C#
                     mov.addProperty("IdProducto", selected.id); 
                     mov.addProperty("Cantidad", cantidad);
                     mov.addProperty("TipoMovimiento", tipo);
@@ -276,6 +296,10 @@ public class MovimientoDialog extends JDialog {
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JComboBox<String> cmbProductos;
     private javax.swing.JComboBox<String> cmbTipo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtMotivo;
     // End of variables declaration//GEN-END:variables

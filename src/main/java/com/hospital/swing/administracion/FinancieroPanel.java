@@ -35,6 +35,7 @@ public class FinancieroPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         btnExportar = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 0));
         jPanel1.setForeground(new java.awt.Color(255, 153, 0));
@@ -67,9 +68,9 @@ public class FinancieroPanel extends javax.swing.JPanel {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(32, 32, 32)
                 .addComponent(jLabel2)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,14 +91,14 @@ public class FinancieroPanel extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(jLabel3)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -116,37 +117,43 @@ public class FinancieroPanel extends javax.swing.JPanel {
         btnExportar.setText("Exportar Reporte");
         btnExportar.addActionListener(this::btnExportarActionPerformed);
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel4.setText("Registro Financiero");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnExportar)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(28, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 786, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel4))
+                .addGap(22, 22, 22)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnExportar)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addGap(28, 28, 28))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -171,7 +178,6 @@ public class FinancieroPanel extends javax.swing.JPanel {
             @Override 
             protected Void doInBackground() {
                 try {
-                    // 1. Intentar cargar consultas
                     JsonElement resC = ApiClient.get("/consultas");
                     System.out.println("DEBUG Financiero - Consultas: " + resC.toString());
                     if (resC.isJsonArray()) consultasArr = resC.getAsJsonArray();
@@ -180,7 +186,6 @@ public class FinancieroPanel extends javax.swing.JPanel {
                 }
 
                 try {
-                    // 2. Intentar cargar inventario
                     JsonElement resI = ApiClient.get("/inventario/status");
                     System.out.println("DEBUG Financiero - Inventario: " + resI.toString());
                     if (resI.isJsonArray()) inventarioArr = resI.getAsJsonArray();
@@ -196,11 +201,9 @@ public class FinancieroPanel extends javax.swing.JPanel {
                 double totalIngresos = 0;
                 int contadorStockBajo = 0;
 
-                // PROCESAR CONSULTAS
                 for (JsonElement el : consultasArr) {
                     JsonObject c = el.getAsJsonObject();
 
-                    // Leemos las claves que C# genera en el JSON
                     int id = c.has("id") ? c.get("id").getAsInt() : 0;
                     String pac = c.has("nombrePaciente") ? c.get("nombrePaciente").getAsString() : "";
                     String med = c.has("nombreMedico") ? c.get("nombreMedico").getAsString() : "";
@@ -213,7 +216,6 @@ public class FinancieroPanel extends javax.swing.JPanel {
                     modelo.addRow(new Object[]{ id, pac, med, fch, dia, String.format("$%.2f", cos) });
                 }
 
-                // PROCESAR INVENTARIO PARA EL CUADRO ROJO
                 for (JsonElement el : inventarioArr) {
                     JsonObject i = el.getAsJsonObject();
                     // Nombres exactos de tu JSON: stockActual, stockMinimo
@@ -225,7 +227,6 @@ public class FinancieroPanel extends javax.swing.JPanel {
                     }
                 }
 
-                // ACTUALIZAR ETIQUETAS
                 jLabel1.setText("Total Consultas: " + consultasArr.size());
                 jLabel2.setText(String.format("Ingresos: $%.2f", totalIngresos));
                 jLabel3.setText("Stock Bajo: " + contadorStockBajo);
@@ -236,7 +237,6 @@ public class FinancieroPanel extends javax.swing.JPanel {
     private void btnExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportarActionPerformed
         // TODO add your handling code here:
         try {
-        // 1. Construir el contenido del reporte
             StringBuilder sb = new StringBuilder();
             sb.append("REPORTE FINANCIERO - Sistema Hospitalario\n");
             sb.append("==========================================\n\n");
@@ -256,7 +256,6 @@ public class FinancieroPanel extends javax.swing.JPanel {
                 sb.append("\n");
             }
 
-            // 2. Configurar el selector de archivos
             JFileChooser fc = new JFileChooser();
             fc.setDialogTitle("Guardar Reporte Financiero");
             fc.setSelectedFile(new File("reporte_financiero.txt"));
@@ -264,7 +263,6 @@ public class FinancieroPanel extends javax.swing.JPanel {
             if (fc.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
                 File archivo = fc.getSelectedFile();
 
-                // 3. Escribir usando un método más compatible y forzando UTF-8 (para las tildes)
                 java.nio.file.Files.write(
                     archivo.toPath(), 
                     sb.toString().getBytes(java.nio.charset.StandardCharsets.UTF_8)
@@ -289,6 +287,7 @@ public class FinancieroPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

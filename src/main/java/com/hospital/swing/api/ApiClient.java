@@ -2,15 +2,23 @@ package com.hospital.swing.api;
 
 import com.google.gson.*;
 import com.hospital.swing.session.SessionManager;
-
 import java.io.*;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
+import java.util.Scanner;
 
 public class ApiClient {
 
     private static final String BASE_URL = "http://localhost:5221/api";
     private static final int TIMEOUT = 10000;
+    
+    private static final Gson gson = new GsonBuilder()
+            .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+            .create();
+
+    public static Gson getGson() {
+        return gson;
+    }
 
     public static JsonElement get(String endpoint) throws Exception {
         return execute("GET", endpoint, null);
@@ -28,19 +36,19 @@ public class ApiClient {
         return execute("DELETE", endpoint, null);
     }
 
-    // Reemplaza tu método execute en ApiClient.java con este:
     private static JsonElement execute(String method, String endpoint, JsonObject body) throws Exception {
         HttpURLConnection con = null;
         try {
             URL url = new URL(BASE_URL + endpoint);
             con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod(method);
-            con.setRequestProperty("Content-Type", "application/json");
+            con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+            con.setRequestProperty("Accept", "application/json");
             con.setConnectTimeout(TIMEOUT);
             con.setReadTimeout(TIMEOUT);
 
             String token = SessionManager.getInstance().getToken();
-            if (token != null && !token.isBlank()) {
+            if (token != null && !token.trim().isEmpty()) {
                 con.setRequestProperty("Authorization", "Bearer " + token);
             }
 
@@ -54,53 +62,39 @@ public class ApiClient {
             return readResponse(con);
 
         } catch (SocketTimeoutException e) {
-            throw new RuntimeException("Tiempo de espera agotado con el servidor.");
+            throw new RuntimeException("El servidor tarda demasiado en responder.");
         } catch (ConnectException e) {
-            throw new RuntimeException("No se puede conectar al servidor. ¿Está encendido el Backend?");
+            throw new RuntimeException("No se pudo conectar al Backend. ¿Está encendido?");
         } catch (IOException e) {
-            throw new RuntimeException("Error de comunicación: " + e.getMessage());
+            throw new RuntimeException("Error de red: " + e.getMessage());
         } finally {
             if (con != null) con.disconnect();
         }
-        // IMPORTANTE: No pongas "return null;" aquí afuera. 
-        // Los catch ya lanzan excepciones, por lo que el compilador no lo pedirá.
     }
 
     private static JsonElement readResponse(HttpURLConnection con) throws Exception {
-
         int status = con.getResponseCode();
 
         InputStream is = (status >= 200 && status < 300)
                 ? con.getInputStream()
                 : con.getErrorStream();
 
-        if (is == null) {
-            if (status >= 200 && status < 300)
-                return JsonNull.INSTANCE;
-            else
-                throw new RuntimeException("HTTP " + status + " sin respuesta.");
+        String responseBody = "";
+        if (is != null) {
+            try (Scanner s = new Scanner(is, StandardCharsets.UTF_8)) {
+                s.useDelimiter("\\A");
+                responseBody = s.hasNext() ? s.next() : "";
+            }
         }
 
-        try (BufferedReader br = new BufferedReader(
-                new InputStreamReader(is, StandardCharsets.UTF_8))) {
-
-            StringBuilder sb = new StringBuilder();
-            String line;
-            while ((line = br.readLine()) != null) {
-                sb.append(line);
-            }
-
-            String response = sb.toString().trim();
-
-            if (status < 200 || status >= 300) {
-                throw new RuntimeException("HTTP " + status + ": " + response);
-            }
-
-            if (response.isEmpty()) {
-                return JsonNull.INSTANCE;
-            }
-
-            return JsonParser.parseString(response);
+        if (status == 204 || responseBody.isEmpty()) {
+            return JsonNull.INSTANCE;
         }
+
+        if (status < 200 || status >= 300) {
+            throw new RuntimeException("Error " + status + ": " + responseBody);
+        }
+
+        return JsonParser.parseString(responseBody);
     }
 }

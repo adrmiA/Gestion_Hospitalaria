@@ -31,6 +31,7 @@ public class InventarioAdminPanel extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         lblResumen = new javax.swing.JLabel();
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Inventario");
 
         btnRegistrar.setText("Registrar Movimiento");
@@ -62,15 +63,15 @@ public class InventarioAdminPanel extends javax.swing.JPanel {
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblResumen)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel1)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnRegistrar)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGap(18, 18, 18)
                             .addComponent(btnActualizar))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 677, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -81,10 +82,10 @@ public class InventarioAdminPanel extends javax.swing.JPanel {
                     .addComponent(btnActualizar)
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblResumen)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -101,7 +102,6 @@ public class InventarioAdminPanel extends javax.swing.JPanel {
         jTable1.getTableHeader().setForeground(Color.WHITE);
         jTable1.setAutoCreateRowSorter(true);
 
-        // Colorear filas con stock bajo
         jTable1.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
             @Override
             public java.awt.Component getTableCellRendererComponent(
@@ -145,37 +145,30 @@ public class InventarioAdminPanel extends javax.swing.JPanel {
                     for (JsonElement el : datos) {
                         JsonObject i = el.getAsJsonObject();
 
-                        // 1. EXTRAER ID (Buscando todas las variantes de C#)
                         int id = 0;
                         if (i.has("idInventario")) id = i.get("idInventario").getAsInt();
                         else if (i.has("IdInventario")) id = i.get("IdInventario").getAsInt();
                         else if (i.has("idProducto")) id = i.get("idProducto").getAsInt();
                         else if (i.has("IdProducto")) id = i.get("IdProducto").getAsInt();
 
-                        // 2. EXTRAER STOCK ACTUAL
                         int actual = 0;
                         if (i.has("stockActual")) actual = i.get("stockActual").getAsInt();
                         else if (i.has("StockActual")) actual = i.get("StockActual").getAsInt();
 
-                        // 3. EXTRAER STOCK MÍNIMO
                         int minimo = 0;
                         if (i.has("stockMinimo")) minimo = i.get("stockMinimo").getAsInt();
                         else if (i.has("StockMinimo")) minimo = i.get("StockMinimo").getAsInt();
 
-                        // 4. EXTRAER STOCK MÁXIMO
                         int maximo = 0;
                         if (i.has("stockMaximo")) maximo = i.get("stockMaximo").getAsInt();
                         else if (i.has("StockMaximo")) maximo = i.get("StockMaximo").getAsInt();
 
-                        // 5. EXTRAER NOMBRE PRODUCTO
                         String nombreProd = "Sin nombre";
                         if (i.has("nombreProducto")) nombreProd = i.get("nombreProducto").getAsString();
                         else if (i.has("NombreProducto")) nombreProd = i.get("NombreProducto").getAsString();
 
-                        // 6. Lógica de Stock Bajo
                         if (actual <= minimo) stockBajo++;
 
-                        // 7. Agregar a la tabla
                         modelo.addRow(new Object[]{
                             id,
                             nombreProd, 
@@ -195,8 +188,8 @@ public class InventarioAdminPanel extends javax.swing.JPanel {
 
     private void actualizarResumen(int stockBajo) {
         lblResumen.setText(stockBajo > 0
-            ? "⚠ " + stockBajo + " producto(s) con stock bajo (fila roja)"
-            : "✓ Todos los productos tienen stock suficiente");
+            ? stockBajo + " producto(s) con stock bajo (fila roja)"
+            : "Todos los productos tienen stock suficiente");
         lblResumen.setForeground(stockBajo > 0
             ? new Color(180, 40, 40) : new Color(34, 139, 34));
     }
@@ -206,20 +199,17 @@ public class InventarioAdminPanel extends javax.swing.JPanel {
         int row = jTable1.getSelectedRow();
         Integer idInv = null;
 
-        // Si hay una fila seleccionada, obtenemos el ID de la columna 0
         if (row >= 0) {
             int modelRow = jTable1.convertRowIndexToModel(row);
             idInv = (Integer) modelo.getValueAt(modelRow, 0);
         }
 
-        // Abrimos el diálogo. Pasamos 'null' si no hay selección, 
-        // y el diálogo corregido debería permitir elegir un producto.
         Window parentWindow = SwingUtilities.getWindowAncestor(this);
         MovimientoDialog d = new MovimientoDialog((Frame)parentWindow, true, idInv);
         d.setVisible(true);
 
         if (d.isRegistrado()) {
-            cargarInventario(); // Recargar la tabla si se guardó algo
+            cargarInventario(); 
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 

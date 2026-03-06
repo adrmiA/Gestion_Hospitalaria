@@ -1,24 +1,32 @@
 package com.hospital.swing.enfermeria;
 
-import javax.swing.*;
+import java.awt.CardLayout;
+import javax.swing.JButton;
 
 public class EnfermeriaPanel extends javax.swing.JPanel {
 
-    private SignosVitalesPanel panelSignosVitales;
-    private MedicamentosPanel  panelMedicamentos;
-    private CamasPanel         panelCamas;
+    private CardLayout cardLayout;
+    private CamasPanel pnlCamas;
+    private SignosVitalesPanel pnlSignos;
+    private MedicamentosPanel pnlMedicinas;
 
     public EnfermeriaPanel() {
         initComponents();
-        panelSignosVitales = new SignosVitalesPanel();
-        panelMedicamentos  = new MedicamentosPanel();
-        panelCamas         = new CamasPanel();
+        cardLayout = (CardLayout) pnlContenedor.getLayout();
+        
+        // Inyectar sub-paneles
+        pnlCamas = new CamasPanel();
+        pnlSignos = new SignosVitalesPanel();
+        pnlMedicinas = new MedicamentosPanel();
+        
+        pnlContenedor.add(pnlCamas, "CAMAS");
+        pnlContenedor.add(pnlSignos, "SIGNOS");
+        pnlContenedor.add(pnlMedicinas, "MEDICINAS");
     }
 
-    public SignosVitalesPanel getPanelSignosVitales() { return panelSignosVitales; }
-    public MedicamentosPanel  getPanelMedicamentos()  { return panelMedicamentos; }
-    public CamasPanel         getPanelCamas()         { return panelCamas; }
-
+    private void showView(String name) {
+        cardLayout.show(pnlContenedor, name);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,19 +36,134 @@ public class EnfermeriaPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        jPanel1 = new javax.swing.JPanel();
+        pnlHeader = new javax.swing.JPanel();
+        lblTitulo = new javax.swing.JLabel();
+        pnlMenu = new javax.swing.JPanel();
+        btnNavCamas = new javax.swing.JButton();
+        btnNavSignos = new javax.swing.JButton();
+        btnNavMedicinas = new javax.swing.JButton();
+        pnlContenedor = new javax.swing.JPanel();
+
+        setLayout(new java.awt.CardLayout());
+
+        pnlHeader.setForeground(new java.awt.Color(255, 204, 153));
+
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTitulo.setText("Gestion de Enfermería");
+
+        javax.swing.GroupLayout pnlHeaderLayout = new javax.swing.GroupLayout(pnlHeader);
+        pnlHeader.setLayout(pnlHeaderLayout);
+        pnlHeaderLayout.setHorizontalGroup(
+            pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlHeaderLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTitulo)
+                .addContainerGap(283, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        pnlHeaderLayout.setVerticalGroup(
+            pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlHeaderLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTitulo)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
+
+        btnNavCamas.setText("Gestion de Camas");
+        btnNavCamas.addActionListener(this::btnNavCamasActionPerformed);
+
+        btnNavSignos.setText("Signos Vitales");
+        btnNavSignos.addActionListener(this::btnNavSignosActionPerformed);
+
+        btnNavMedicinas.setText("Adm. Medicamentos");
+        btnNavMedicinas.addActionListener(this::btnNavMedicinasActionPerformed);
+
+        javax.swing.GroupLayout pnlMenuLayout = new javax.swing.GroupLayout(pnlMenu);
+        pnlMenu.setLayout(pnlMenuLayout);
+        pnlMenuLayout.setHorizontalGroup(
+            pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnNavCamas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnNavSignos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnNavMedicinas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+        pnlMenuLayout.setVerticalGroup(
+            pnlMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlMenuLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(btnNavCamas)
+                .addGap(18, 18, 18)
+                .addComponent(btnNavSignos)
+                .addGap(18, 18, 18)
+                .addComponent(btnNavMedicinas)
+                .addContainerGap(376, Short.MAX_VALUE))
+        );
+
+        pnlContenedor.setLayout(new java.awt.CardLayout());
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlHeader, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(pnlMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pnlContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(pnlHeader, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnlContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+
+        add(jPanel1, "card2");
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnNavCamasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavCamasActionPerformed
+        // TODO add your handling code here:
+            CardLayout cl = (CardLayout) pnlContenedor.getLayout();
+            cl.show(pnlContenedor, "CAMAS");
+
+            if (pnlCamas != null) {
+                pnlCamas.cargarDatos();
+            }
+    }//GEN-LAST:event_btnNavCamasActionPerformed
+
+    private void btnNavSignosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavSignosActionPerformed
+        // TODO add your handling code here:
+        CardLayout cl = (CardLayout) pnlContenedor.getLayout();
+        cl.show(pnlContenedor, "SIGNOS");
+    }//GEN-LAST:event_btnNavSignosActionPerformed
+
+    private void btnNavMedicinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNavMedicinasActionPerformed
+        // TODO add your handling code here:
+        CardLayout cl = (CardLayout) pnlContenedor.getLayout();
+        cl.show(pnlContenedor, "MEDICINAS");
+    }//GEN-LAST:event_btnNavMedicinasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnNavCamas;
+    private javax.swing.JButton btnNavMedicinas;
+    private javax.swing.JButton btnNavSignos;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JPanel pnlContenedor;
+    private javax.swing.JPanel pnlHeader;
+    private javax.swing.JPanel pnlMenu;
     // End of variables declaration//GEN-END:variables
 }
