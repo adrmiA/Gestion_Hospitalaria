@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Portal del Paciente";
+}
+
+<section class="hero">
+    <h1>Portal del Paciente</h1>
+    <p>Bienvenido al portal en línea del Hospital Padre Arrupe.<br />Seleccione una opción para continuar.</p>
+</section>
+
+<section class="options-grid">
+
+    <a href="/Paciente/SolicitarCita" class="option-card">
+        <div class="option-icon blue">
+            <i class="fas fa-calendar-plus"></i>
+        </div>
+        <div class="option-body">
+            <h2>Solicitar Cita</h2>
+            <p>Programe una consulta con el médico de su preferencia. Su solicitud será confirmada por recepción.</p>
+        </div>
+        <div class="option-arrow"><i class="fas fa-chevron-right"></i></div>
+    </a>
+
+    <a href="/Paciente/InformeMedico" class="option-card">
+        <div class="option-icon green">
+            <i class="fas fa-file-medical-alt"></i>
+        </div>
+        <div class="option-body">
+            <h2>Informe Médico</h2>
+            <p>Consulte su historial clínico y el detalle de sus consultas anteriores usando su DUI.</p>
+        </div>
+        <div class="option-arrow"><i class="fas fa-chevron-right"></i></div>
+    </a>
+
+</section>

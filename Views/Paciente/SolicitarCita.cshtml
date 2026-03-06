@@ -1,0 +1,85 @@
+﻿@model SolicitarCitaVM
+@{
+    ViewData["Title"] = "Solicitar Cita";
+}
+
+<div class="page-wrap">
+    <div class="page-back">
+        <a href="/"><i class="fas fa-arrow-left"></i> Volver al inicio</a>
+    </div>
+
+    <div class="page-title">
+        <div>
+            <h1>Solicitar Cita Médica</h1>
+            <p>Complete el formulario. Recepción confirmará su cita a la brevedad.</p>
+        </div>
+    </div>
+
+    @if (Model.MensajeError != null)
+    {
+        <div class="alert alert-error">
+            @Model.MensajeError
+        </div>
+    }
+
+    @if (Model.MensajeExito != null)
+    {
+        <div class="alert alert-success">
+            @Model.MensajeExito
+        </div>
+    }
+
+    <div class="form-card">
+        <form method="post" asp-action="SolicitarCita">
+            @Html.AntiForgeryToken()
+
+            <div class="form-section">
+                <h3>Identificación</h3>
+                <div class="field">
+                    <label for="Dui">DUI del paciente <span class="required">*</span></label>
+                    <input type="text" id="Dui" name="Dui" value="@Model.Dui"
+                           class="input" placeholder="00000000-0" maxlength="10" required />
+                    <span class="hint">Debe estar registrado previamente en el hospital.</span>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Médico</h3>
+                <div class="field">
+                    <label for="IdMedico">Especialista <span class="required">*</span></label>
+                    <select id="IdMedico" name="IdMedico" class="input" required>
+                        <option value="0">Seleccione un médico</option>
+                        @foreach (var m in Model.Medicos)
+                        {
+                            <option value="@m.Id" selected="@(Model.IdMedico == m.Id)">
+                                @m.Nombre &ndash; @m.Especialidad
+                            </option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Fecha y hora preferida</h3>
+                <div class="field-row">
+                    <div class="field">
+                        <label for="Fecha">Fecha <span class="required">*</span></label>
+                        <input type="date" id="Fecha" name="Fecha" value="@Model.Fecha"
+                               class="input" min="@DateTime.Now.ToString("yyyy-MM-dd")" required />
+                    </div>
+                    <div class="field">
+                        <label for="Hora">Hora <span class="required">*</span></label>
+                        <input type="time" id="Hora" name="Hora" value="@Model.Hora" class="input" required />
+                    </div>
+                </div>
+                <span class="hint">La fecha y hora son referenciales. Recepción puede ajustarlas al confirmar.</span>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">
+                    Enviar Solicitud
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,85 @@
+﻿@model InformeMedicoVM
+@{
+    ViewData["Title"] = "Informe Médico";
+}
+
+<div class="page-wrap">
+    <div class="page-back">
+        <a href="/"><i class="fas fa-arrow-left"></i> Volver al inicio</a>
+    </div>
+
+    <div class="page-title">
+        <div>
+            <h1>Informe Médico</h1>
+            <p>Ingrese su DUI para consultar su historial clínico.</p>
+        </div>
+    </div>
+
+    <div class="form-card">
+        <form method="post" asp-action="InformeMedico">
+            @Html.AntiForgeryToken()
+            <div class="field-row align-end">
+                <div class="field">
+                    <label for="Dui">DUI <span class="required">*</span></label>
+                    <input type="text" id="Dui" name="Dui" value="@Model.Dui"
+                           class="input" placeholder="00000000-0" maxlength="10" required />
+                </div>
+                <button type="submit" class="btn btn-primary">
+                     Consultar
+                </button>
+            </div>
+        </form>
+    </div>
+
+    @if (Model.MensajeError != null)
+    {
+        <div class="alert alert-error">
+            @Model.MensajeError
+        </div>
+    }
+
+    @if (Model.Expediente != null)
+    {
+        var exp = Model.Expediente;
+
+        <div class="result-card">
+            <div class="result-header">
+                <div>
+                    <h2>@exp.NombrePaciente</h2>
+                    <span>DUI: @exp.DUI &nbsp;·&nbsp; Expediente #@exp.Id &nbsp;·&nbsp; Apertura: @exp.FechaApertura</span>
+                </div>
+            </div>
+
+            <h3 class="section-label">
+                 Historial de consultas
+                <span class="badge">@exp.HistorialConsultas.Count</span>
+            </h3>
+
+            @if (!exp.HistorialConsultas.Any())
+            {
+                <div class="empty-state">
+                    <p>No hay consultas registradas en este expediente.</p>
+                </div>
+            }
+            else
+            {
+                <div class="consultas-list">
+                    @foreach (var c in exp.HistorialConsultas.OrderByDescending(x => x.Fecha))
+                    {
+                        <div class="consulta-item">
+                            <div class="consulta-date">
+                                @c.Fecha
+                            </div>
+                            <div class="consulta-body">
+                                <div class="consulta-medico"> 
+                                    @c.Medico
+                                </div>
+                                <div class="consulta-diag">@c.Diagnostico</div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    }
+</div>
